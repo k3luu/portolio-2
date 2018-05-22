@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'whatwg-fetch';
 import 'babel-polyfill';
-// import { Router, Route, hashHistory } from 'react-router';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // import { Provider } from 'react-redux';
 // import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 
@@ -10,6 +10,10 @@ import 'babel-polyfill';
 import AppIndex from './app/components/appIndex';
 
 ReactDOM.render(
-    <AppIndex/>,
-    document.getElementById('app')
+  <BrowserRouter>
+    <Switch>
+      <Route path="/" component={AppIndex} />
+    </Switch>
+  </BrowserRouter>,
+  document.getElementById('app')
 );
