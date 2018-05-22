@@ -67,7 +67,7 @@ module.exports = function(env) {
         inject: false,
         template: './template/index.ejs',
         appMountId: 'app',
-        title: 'jb webpack',
+        title: 'Kathy Luuu',
         mobile: true,
         hash: false,
         minify: {

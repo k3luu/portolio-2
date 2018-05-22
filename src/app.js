@@ -4,6 +4,9 @@ import 'whatwg-fetch';
 import 'babel-polyfill';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
+/*eslint-disable*/
+import _ from 'lodash';
+/*eslint-enable*/
 // import { Provider } from 'react-redux';
 // import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 
