@@ -4,9 +4,9 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: columns;
-  justify-content: flex-end;
+  div {
+    height: 100%;
+  }
 `;
 
 class Navigation extends React.Component {
@@ -23,11 +23,20 @@ class Navigation extends React.Component {
 
     return (
       <Container>
-        <Tabs value={value} onChange={this.handleChange}>
-          <Tab label="Home" />
-          <Tab label="Projects" />
-          <Tab label="Experience" href="#basic-tabs" />
-          <Tab label="About" />
+        <Tabs
+          value={value}
+          onChange={this.handleChange}
+          classes={{
+            root: {
+              height: '100%'
+            }
+          }}
+          style={{ height: '100%' }}
+        >
+          <Tab label="Home" disableRipple style={{ height: '100%' }} />
+          <Tab label="Projects" disableRipple style={{ height: '100%' }} />
+          <Tab label="Experience" disableRipple style={{ height: '100%' }} />
+          <Tab label="About" disableRipple style={{ height: '100%' }} />
         </Tabs>
       </Container>
     );
