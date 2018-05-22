@@ -9,6 +9,8 @@ const Container = styled.div`
   }
 `;
 
+const tabStyle = { height: '100%' };
+
 class Navigation extends React.Component {
   state = {
     value: 0
@@ -23,16 +25,7 @@ class Navigation extends React.Component {
 
     return (
       <Container>
-        <Tabs
-          value={value}
-          onChange={this.handleChange}
-          classes={{
-            root: {
-              height: '100%'
-            }
-          }}
-          style={{ height: '100%' }}
-        >
+        <Tabs value={value} onChange={this.handleChange} style={tabStyle}>
           <Tab label="Home" disableRipple style={{ height: '100%' }} />
           <Tab label="Projects" disableRipple style={{ height: '100%' }} />
           <Tab label="Experience" disableRipple style={{ height: '100%' }} />
