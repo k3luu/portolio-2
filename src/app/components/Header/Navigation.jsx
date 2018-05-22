@@ -10,8 +10,6 @@ const Container = styled.div`
   }
 `;
 
-const tabStyle = { height: '100%' };
-
 class Navigation extends React.Component {
   state = {
     value: 0,
@@ -41,8 +39,8 @@ class Navigation extends React.Component {
 
     return (
       <Container>
-        <Tabs value={value} onChange={this.handleChange} style={tabStyle}>
-          {_.map(options, p => <Tab key={p.id} label={p.name} disableRipple style={tabStyle} />)}
+        <Tabs value={value} onChange={this.handleChange}>
+          {_.map(options, p => <Tab key={p.id} label={p.name} />)}
         </Tabs>
       </Container>
     );
