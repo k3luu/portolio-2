@@ -3,6 +3,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import IconButton from '@material-ui/core/IconButton';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faLinkedinIn from '@fortawesome/fontawesome-free-brands/faLinkedinIn';
+import faGithub from '@fortawesome/fontawesome-free-brands/faGithub';
+import faInstagram from '@fortawesome/fontawesome-free-brands/faInstagram';
+import faEnvelope from '@fortawesome/fontawesome-free-regular/faEnvelope';
 
 const Container = styled.div`
   display: table;
@@ -18,16 +23,16 @@ class SocialMediaIcons extends React.Component {
     return (
       <Container>
         <IconButton component={SocialLink} href="https://www.linkedin.com/in/kathy-luu/">
-          <i className="fa fa-linkedin" />
+          <FontAwesomeIcon icon={faLinkedinIn} />
         </IconButton>
         <IconButton component={SocialLink} href="https://github.com/k3luu">
-          <i className="fa fa-github" />
+          <FontAwesomeIcon icon={faGithub} />
         </IconButton>
         <IconButton component={SocialLink} href="https://www.instagram.com/luusfilm/">
-          <i className="fa fa-instagram" />
+          <FontAwesomeIcon icon={faInstagram} />
         </IconButton>
         <IconButton component={SocialLink} href="mailto:kathyluu820@gmail.com">
-          <i className="fa fa-envelope" />
+          <FontAwesomeIcon icon={faEnvelope} />
         </IconButton>
       </Container>
     );
