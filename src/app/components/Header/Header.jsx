@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import breakpoint from 'styled-components-breakpoint';
 import Navigation from '../Navigation/Navigation';
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
 
@@ -13,12 +14,23 @@ const Panel = styled.div`
   top: 0;
 `;
 
+const SocialContainer = styled.div`
+  display: none;
+
+  ${breakpoint('sm')`
+    display: block
+  `};
+`;
+
 class Header extends React.Component {
   render() {
     return (
       <Panel>
         <Navigation />
-        <SocialMediaIcons />
+
+        <SocialContainer>
+          <SocialMediaIcons />
+        </SocialContainer>
       </Panel>
     );
   }

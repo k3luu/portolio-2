@@ -5,7 +5,7 @@ import Tab from '@material-ui/core/Tab';
 const styles = theme => ({
   root: {
     [theme.breakpoints.up('md')]: {
-      minWidth: 120
+      minWidth: 140
     }
   },
   label: {

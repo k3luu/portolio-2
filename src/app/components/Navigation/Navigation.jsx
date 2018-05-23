@@ -1,9 +1,15 @@
+/*eslint-disable*/
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faHome from '@fortawesome/fontawesome-free-solid/faHome';
+import faBriefcase from '@fortawesome/fontawesome-free-solid/faBriefcase';
+import faUser from '@fortawesome/fontawesome-free-regular/faUser';
+import faPaperPlane from '@fortawesome/fontawesome-free-regular/faPaperPlane';
 import Tabs from '@material-ui/core/Tabs';
-// import Tab from '@material-ui/core/Tab';
 import MyTab from '../MUI/MyTab';
+import './styles/_navigation.scss';
 
 const Container = styled.div`
   div {
@@ -15,11 +21,10 @@ class Navigation extends React.Component {
   state = {
     value: 0,
     options: [
-      { id: 0, name: 'Home', to: '/' },
-      { id: 1, name: 'Projects', to: '/projects' },
-      { id: 2, name: 'Experience', to: '/experience' },
-      { id: 3, name: 'About', to: '/about' },
-      { id: 4, name: 'Contact', to: '/contact' }
+      { id: 0, name: 'Home', to: '/', icon: faHome },
+      { id: 1, name: 'Projects', to: '/projects', icon: faBriefcase },
+      { id: 2, name: 'About', to: '/about', icon: faUser },
+      { id: 3, name: 'Contact', to: '/contact', icon: faPaperPlane }
     ]
   };
 

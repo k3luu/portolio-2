@@ -1,2 +1,21 @@
 /* stylelint-disable */
 // Variables
+
+// Media Query Breakpoints
+
+$bp-xl:                 1920px;
+$bp-lg:                 1280px;
+$bp-md:                 960px;
+$bp-sm:                 600px;
+$bp-xs:                 0;
+
+// Font
+
+$primary-font-family:   'Roboto', sans-serif;
+$primary-font:          normal 14px/21px 'Roboto', sans-serif;
+$primary-font-bold:     bold 14px/21px 'Roboto', sans-serif;
+$primary-font-italic:   italic 14px/21px 'Roboto', sans-serif;
+
+$secondary-font-family: 'Lora', sans-serif;
+$secondary-font:        normal 12px/18px 'Lora', sans-serif;
+$secondary-font-bold:   bold 12px/18px 'Lora', sans-serif;
