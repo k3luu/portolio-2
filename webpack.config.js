@@ -238,28 +238,6 @@ module.exports = function(env) {
         {
           test: /\.svg$/,
           loader: 'raw-loader'
-        },
-
-        // FA loaders
-        {
-          test: /(\.css$)/,
-          include: /node_modules/,
-          loaders: ['style-loader', 'css-loader']
-        },
-        {
-          test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-          include: /node_modules/,
-          loader: 'url-loader?limit=100000'
-        },
-        {
-          test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-          include: /node_modules/,
-          loader: 'url-loader?limit=10000&mimetype=application/font-woff'
-        },
-        {
-          test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-          include: /node_modules/,
-          loader: 'file-loader'
         }
       ]
     },

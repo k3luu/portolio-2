@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 /*eslint-disable*/
 import _ from 'lodash';
+import Styles from './app/assets/scss/style.scss';
 /*eslint-enable*/
 // import { Provider } from 'react-redux';
 // import { combineReducers, createStore, applyMiddleware, compose } from 'redux';

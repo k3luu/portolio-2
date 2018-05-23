@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Navigation from './Navigation';
-import SocialMediaIcons from './SocialMediaIcons';
+import Navigation from '../Navigation/Navigation';
+import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
 
 const Panel = styled.div`
   background: #f6f9fd;
@@ -9,7 +9,6 @@ const Panel = styled.div`
   justify-content: space-between;
   height: 80px;
   width: 100%;
-  display: flex;
   position: fixed;
   top: 0;
 `;

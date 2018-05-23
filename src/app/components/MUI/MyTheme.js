@@ -5,22 +5,6 @@ export const MyTheme = createMuiTheme({
   palette: {
     primary: blue
   },
-  props: {
-    MuiTabs: {
-      style: { height: '100%' },
-      indicatorColor: 'primary',
-      textColor: 'primary'
-    },
-    MuiTab: {
-      disableRipple: true,
-      style: { height: '100%' }
-    }
-  },
-  overrides: {
-    MuiTab: {
-      label: {
-        fontWeight: 'bold'
-      }
-    }
-  }
+  props: {},
+  overrides: {}
 });

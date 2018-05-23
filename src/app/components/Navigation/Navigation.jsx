@@ -2,7 +2,8 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+// import Tab from '@material-ui/core/Tab';
+import MyTab from '../MUI/MyTab';
 
 const Container = styled.div`
   div {
@@ -39,8 +40,14 @@ class Navigation extends React.Component {
 
     return (
       <Container>
-        <Tabs value={value} onChange={this.handleChange}>
-          {_.map(options, p => <Tab key={p.id} label={p.name} />)}
+        <Tabs
+          value={value}
+          textColor="primary"
+          indicatorColor="primary"
+          style={{ height: '100%' }}
+          onChange={this.handleChange}
+        >
+          {_.map(options, p => <MyTab key={p.id} label={p.name} />)}
         </Tabs>
       </Container>
     );

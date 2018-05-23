@@ -14,6 +14,7 @@ const Container = styled.div`
   line-height: 80px;
   list-style: none;
   margin: 0;
+  padding: 0 10px;
 `;
 
 const SocialLink = props => <a target="_blank" rel="noopener noreferrer" {...props} />;
