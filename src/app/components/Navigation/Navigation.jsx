@@ -2,6 +2,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
+import breakpoint from 'styled-components-breakpoint';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faHome from '@fortawesome/fontawesome-free-solid/faHome';
 import faBriefcase from '@fortawesome/fontawesome-free-solid/faBriefcase';
@@ -12,19 +13,26 @@ import MyTab from '../MUI/MyTab';
 import './styles/_navigation.scss';
 
 const Container = styled.div`
+  width: 100%;
+
   div {
     height: 100%;
+    width: 100%;
   }
+
+  ${breakpoint('sm')`
+    width: auto;
+  `};
 `;
 
 class Navigation extends React.Component {
   state = {
     value: 0,
     options: [
-      { id: 0, name: 'Home', to: '/', icon: faHome },
-      { id: 1, name: 'Projects', to: '/projects', icon: faBriefcase },
-      { id: 2, name: 'About', to: '/about', icon: faUser },
-      { id: 3, name: 'Contact', to: '/contact', icon: faPaperPlane }
+      { id: 0, name: 'Home', to: 'home', icon: faHome },
+      { id: 1, name: 'Projects', to: 'projects', icon: faBriefcase },
+      { id: 2, name: 'About', to: 'about', icon: faUser },
+      { id: 3, name: 'Contact', to: 'contact', icon: faPaperPlane }
     ]
   };
 
@@ -36,7 +44,7 @@ class Navigation extends React.Component {
       if (p.id === value) match = p.to;
     });
 
-    this.props.history.push(match);
+    document.getElementById(match).scrollIntoView({ behavior: 'smooth', block: 'start' });
     this.setState({ value });
   };
 

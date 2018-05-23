@@ -6,7 +6,7 @@ const Container = styled.div``;
 class Contact extends React.Component {
   render() {
     return (
-      <div className="body">
+      <div id="contact" className="body">
         <Container>Contact Me</Container>
       </div>
     );

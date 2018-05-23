@@ -10,10 +10,9 @@ import faInstagram from '@fortawesome/fontawesome-free-brands/faInstagram';
 import faEnvelope from '@fortawesome/fontawesome-free-regular/faEnvelope';
 
 const Container = styled.div`
-  display: table;
-  line-height: 80px;
-  list-style: none;
-  margin: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
   padding: 0 10px;
 `;
 

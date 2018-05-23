@@ -6,7 +6,7 @@ const Container = styled.div``;
 class Home extends React.Component {
   render() {
     return (
-      <div className="body">
+      <div id="home" className="body">
         <Container>Home</Container>
       </div>
     );

@@ -8,7 +8,7 @@ const Panel = styled.div`
   background: #f6f9fd;
   display: flex;
   justify-content: space-between;
-  height: 80px;
+  height: 70px;
   width: 100%;
   position: fixed;
   top: 0;

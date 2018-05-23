@@ -6,6 +6,10 @@ const styles = theme => ({
   root: {
     [theme.breakpoints.up('md')]: {
       minWidth: 140
+    },
+    [theme.breakpoints.down('sm')]: {
+      flexGrow: 1,
+      minWidth: 90
     }
   },
   label: {
