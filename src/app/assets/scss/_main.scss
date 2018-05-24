@@ -1,6 +1,7 @@
 html {
     box-sizing: border-box;
     font: $primary-font;
+    color: $daintree;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -16,8 +17,17 @@ body {
 }
 
 a {
-    color: black;
+    color: $venice-blue;
     text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: uppercase;
 }
 
 h2 {
@@ -25,7 +35,6 @@ h2 {
     font-size: 24px;
     line-height: 24px;
     letter-spacing: 4px;
-    text-transform: uppercase;
 }
 
 .body {

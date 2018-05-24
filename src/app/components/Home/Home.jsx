@@ -21,7 +21,6 @@ const Name = styled.h1`
   font-size: 50px;
   line-height: 50px;
   letter-spacing: 8px;
-  text-transform: uppercase;
 `;
 
 const Title = styled.h3`
@@ -29,7 +28,6 @@ const Title = styled.h3`
   font-size: 14px;
   line-height: 16px;
   letter-spacing: 8px;
-  text-transform: uppercase;
   opacity: 0.8;
 
   ${breakpoint('sm')`
