@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React from 'react';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
@@ -8,7 +7,11 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   height: 100vh;
-  padding: 0 30px;
+  padding: 0 20px;
+
+  ${breakpoint('sm')`
+    padding: 0 50px;  
+  `};
 `;
 
 const Content = styled.div``;
@@ -21,7 +24,7 @@ const Name = styled.h1`
   text-transform: uppercase;
 `;
 
-const Title = styled.h2`
+const Title = styled.h3`
   color: #032b2f; // daintree
   font-size: 14px;
   line-height: 16px;

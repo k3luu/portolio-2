@@ -6,9 +6,9 @@ const Container = styled.div``;
 class Projects extends React.Component {
   render() {
     return (
-      <div id="projects" className="body">
-        <Container>Projects</Container>
-      </div>
+      <Container id="projects" className="body">
+        <h2>Projects</h2>
+      </Container>
     );
   }
 }
