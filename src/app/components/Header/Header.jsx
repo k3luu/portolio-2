@@ -4,7 +4,7 @@ import breakpoint from 'styled-components-breakpoint';
 import Navigation from '../Navigation/Navigation';
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
 
-const Panel = styled.div`
+const HeaderBar = styled.div`
   background: #f6f9fd;
   display: flex;
   justify-content: space-between;
@@ -12,6 +12,7 @@ const Panel = styled.div`
   width: 100%;
   position: fixed;
   top: 0;
+  z-index: 1100;
 `;
 
 const SocialContainer = styled.div`
@@ -25,13 +26,13 @@ const SocialContainer = styled.div`
 class Header extends React.Component {
   render() {
     return (
-      <Panel>
+      <HeaderBar>
         <Navigation />
 
         <SocialContainer>
           <SocialMediaIcons />
         </SocialContainer>
-      </Panel>
+      </HeaderBar>
     );
   }
 }
