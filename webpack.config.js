@@ -70,6 +70,7 @@ module.exports = function(env) {
         title: 'Kathy Luu',
         mobile: true,
         hash: false,
+        favicon: './template/favicon.ico',
         minify: {
           collapseWhitespace: true,
           preserveLineBreaks: false
