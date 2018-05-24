@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import React from 'react';
 import styled from 'styled-components';
+import breakpoint from 'styled-components-breakpoint';
 import ReactRevealText from 'react-reveal-text';
 
 const Container = styled.div`
@@ -14,17 +15,24 @@ const Content = styled.div``;
 
 const Name = styled.h1`
   color: #032b2f; // daintree
-  font-size: 48px;
+  font-size: 50px;
+  line-height: 50px;
   letter-spacing: 8px;
   text-transform: uppercase;
 `;
 
 const Title = styled.h2`
   color: #032b2f; // daintree
-  font-size: 30px;
+  font-size: 14px;
+  line-height: 16px;
   letter-spacing: 8px;
   text-transform: uppercase;
   opacity: 0.8;
+
+  ${breakpoint('sm')`
+    font-size: 24px;
+    line-height: 24px;
+  `};
 `;
 
 class Home extends React.Component {
