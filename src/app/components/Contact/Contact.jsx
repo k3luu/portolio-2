@@ -18,7 +18,7 @@ const Content = styled.div`
   flex-direction: column;
   margin-top: 40px;
   height: 300px;
-  padding-bottom: 150px;
+  padding-bottom: 250px;
 
   ${breakpoint('sm')`
       flex-direction: row;  
