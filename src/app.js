@@ -32,8 +32,8 @@ ReactDOM.render(
     <MuiThemeProvider theme={MyTheme}>
       <BrowserRouter>
         <Switch>
-          <Route path="/success" component={Success} />
-          <Route path="/" component={AppIndex} />
+          <Route path="/success" component={Success} name="Success" />
+          <Route path="/" component={AppIndex} name="AppIndex" />
         </Switch>
       </BrowserRouter>
     </MuiThemeProvider>

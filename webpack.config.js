@@ -10,8 +10,8 @@ const SystemBellPlugin = require('system-bell-webpack-plugin');
 const NyanProgressPlugin = require('nyan-progress-webpack-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
-const PACKAGE = require('./package.json');
 const FlowBabelWebpackPlugin = require('flow-babel-webpack-plugin');
+const PACKAGE = require('./package.json');
 
 const sourcePath = path.join(__dirname, './src');
 const staticsPath = path.join(__dirname, './build');
