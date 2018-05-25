@@ -139,11 +139,11 @@ class Contact extends React.Component {
           </Info>
           <Form name="contact" method="POST" data-netlify="true">
             <TextBox>
-              <TextField id="name" label="Name" style={{ flexGrow: 1 }} />
-              <TextField id="email" label="Email" style={{ flexGrow: 1 }} />
+              <TextField id="name" name="name" label="Name" style={{ flexGrow: 1 }} />
+              <TextField id="email" name="email" label="Email" style={{ flexGrow: 1 }} />
             </TextBox>
             <MessageBox>
-              <TextField id="message" label="Message" multiline rows="4" fullWidth />
+              <TextField id="message" name="message" label="Message" multiline rows="4" fullWidth />
             </MessageBox>
 
             <Button type="submit" className="hp-mt50" variant="raised" color="secondary">
