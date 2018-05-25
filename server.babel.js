@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 
 app.get('*.js', function(req, res, next) {
@@ -21,3 +22,4 @@ app.get('*', function(req, res) {
 });
 
 app.listen(process.env.PORT || 3000);
+console.log('server started on port ' + process.env.PORT);
