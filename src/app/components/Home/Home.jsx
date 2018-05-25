@@ -18,9 +18,14 @@ const Content = styled.div``;
 
 const Name = styled.h1`
   color: #032b2f; // daintree
-  font-size: 50px;
-  line-height: 50px;
+  font-size: 70px;
+  line-height: 70px;
   letter-spacing: 8px;
+
+  ${breakpoint('sm_er')`
+    font-size: 80px;
+    line-height: 80px;
+  `};
 `;
 
 const Title = styled.h3`

@@ -17,8 +17,12 @@ app.get('*.js', function(req, res, next) {
 
 app.use('/', express.static('./build'));
 
+// app.get('*', function(req, res) {
+//   res.sendFile(path.resolve(__dirname + '/index.html'));
+// });
+
 app.get('*', function(req, res) {
-  res.sendFile(path.resolve(__dirname + '/index.html'));
+  res.sendFile(__dirname + '/index.html');
 });
 
 app.listen(process.env.PORT || 3000);

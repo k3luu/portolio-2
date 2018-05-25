@@ -20,6 +20,7 @@ import { MyTheme } from './app/components/MUI/MyTheme';
 const breakPointsTheme = {
   breakpoints: {
     xs: 0,
+    sm_er: 350,
     sm: 600,
     md: 960,
     lg: 1280,
