@@ -10,6 +10,7 @@ import faEnvelope from '@fortawesome/fontawesome-free-regular/faEnvelope';
 import faLinkedinIn from '@fortawesome/fontawesome-free-brands/faLinkedinIn';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import config from '../../SiteConfig';
+import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
 
 const Container = styled.div``;
 
@@ -45,6 +46,26 @@ const Note = styled.div`
   font-weight: bold;
   text-transform: uppercase;
   margin-left: 20px;
+`;
+
+const MailContainer = styled.div`
+  display: none;
+
+  ${breakpoint('sm')`
+    display: block
+  `};
+`;
+
+const SocialContainer = styled.div`
+  display: block;
+
+  ${breakpoint('sm')`
+    display: none
+  `};
+
+  > div {
+    justify-content: center;
+  }
 `;
 
 const Form = styled.form`
@@ -97,18 +118,24 @@ class Contact extends React.Component {
 
         <Content>
           <Info>
-            <h4 className="hp-mb40">Get in touch</h4>
+            <h4 className="hp-mb30">Get in touch</h4>
 
-            <a href={`mailto:${config.email}`}>
-              <FontAwesomeIcon icon={faEnvelope} style={{ fontSize: 16 }} /> {config.email}
-            </a>
-            <CopyToClipboard text={config.email}>
-              <Note>(Copy address)</Note>
-            </CopyToClipboard>
-            {/*<a href={`mailto:${config.linkedIn}`}>*/}
-            {/*<FontAwesomeIcon icon={faLinkedinIn} style={{ color: '#0077B5', fontSize: 16, marginTop: 10 }} /> View my*/}
-            {/*LinkedIn profile*/}
-            {/*</a>*/}
+            <SocialContainer>
+              <SocialMediaIcons />
+            </SocialContainer>
+
+            <MailContainer>
+              <a href={`mailto:${config.email}`}>
+                <FontAwesomeIcon icon={faEnvelope} style={{ fontSize: 16 }} /> {config.email}
+              </a>
+              <CopyToClipboard text={config.email}>
+                <Note>(Copy address)</Note>
+              </CopyToClipboard>
+              {/*<a href={`mailto:${config.linkedIn}`}>*/}
+              {/*<FontAwesomeIcon icon={faLinkedinIn} style={{ color: '#0077B5', fontSize: 16, marginTop: 10 }} /> View my*/}
+              {/*LinkedIn profile*/}
+              {/*</a>*/}
+            </MailContainer>
           </Info>
           <Form>
             <TextBox>
