@@ -14,6 +14,7 @@ import Styles from './app/assets/scss/style.scss';
 
 //components
 import AppIndex from './app/components/appIndex';
+import Success from './app/components/Success/Success';
 import { MyTheme } from './app/components/MUI/MyTheme';
 
 const breakPointsTheme = {
@@ -31,6 +32,7 @@ ReactDOM.render(
     <MuiThemeProvider theme={MyTheme}>
       <BrowserRouter>
         <Switch>
+          <Route path="/success" component={Success} />
           <Route path="/" component={AppIndex} />
         </Switch>
       </BrowserRouter>

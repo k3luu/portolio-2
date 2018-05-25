@@ -137,7 +137,7 @@ class Contact extends React.Component {
               {/*</a>*/}
             </MailContainer>
           </Info>
-          <Form name="contact" method="POST" data-netlify="true">
+          <Form name="contact" method="POST" action="/success" data-netlify="true">
             <TextBox>
               <TextField id="name" name="name" label="Name" style={{ flexGrow: 1 }} />
               <TextField id="email" name="email" label="Email" style={{ flexGrow: 1 }} />
