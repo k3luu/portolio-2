@@ -8,8 +8,7 @@ const styles = theme => ({
       minWidth: 140
     },
     [theme.breakpoints.down('sm')]: {
-      flexGrow: 1,
-      minWidth: 90
+      flexGrow: 1
     }
   },
   label: {

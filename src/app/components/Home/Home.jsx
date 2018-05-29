@@ -22,7 +22,7 @@ const Name = styled.h1`
   line-height: 70px;
   letter-spacing: 8px;
 
-  ${breakpoint('sm_er')`
+  ${breakpoint('sm')`
     font-size: 80px;
     line-height: 80px;
   `};
