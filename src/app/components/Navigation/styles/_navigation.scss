@@ -1,2 +1,12 @@
+@import '../../../assets/scss/mixins/breakpoints';
+@import '../../../assets/scss/variables';
+
 .nav {
+    &__icon {
+        display: none;
+
+        @include bp-xsmall {
+            display: block;
+        }
+    }
 }

@@ -60,7 +60,9 @@ class Navigation extends React.Component {
           style={{ height: '100%' }}
           onChange={this.handleChange}
         >
-          {_.map(options, p => <MyTab key={p.id} label={p.name} />)}
+          {_.map(options, p => (
+            <MyTab key={p.id} label={p.name} icon={<FontAwesomeIcon className="nav__icon" icon={p.icon} />} />
+          ))}
         </Tabs>
       </Container>
     );

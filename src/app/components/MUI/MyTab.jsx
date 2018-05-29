@@ -13,7 +13,20 @@ const styles = theme => ({
     }
   },
   label: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    [theme.breakpoints.down('xs')]: {
+      display: 'none'
+    }
+  },
+  labelContainer: {
+    [theme.breakpoints.down('xs')]: {
+      padding: 0
+    }
+  },
+  labelIcon: {
+    [theme.breakpoints.down('xs')]: {
+      fontSize: 20
+    }
   }
 });
 
