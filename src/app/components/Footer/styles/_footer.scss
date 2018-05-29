@@ -2,7 +2,7 @@
 @import '../../../assets/scss/variables';
 
 .footer {
-        @include bp-xsmall {
-            display: none
-        }
+    @include bp-xsmall {
+        display: none
+    }
 }
