@@ -8,6 +8,8 @@ const Container = styled.div`
   align-items: center;
   height: 100vh;
   padding: 0 35px;
+  max-width: 900px;
+  margin: 0 auto;
 
   ${breakpoint('sm')`
     padding: 0 50px;  

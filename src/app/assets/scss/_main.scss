@@ -40,6 +40,8 @@ h2 {
 .body {
     padding: $header-height 50px 0 50px;
     min-height: calc(100vh - #{$header-height});
+    max-width: 900px;
+    margin: 0 auto;
 
     @include bp-xsmall {
         padding: 20px 35px;
