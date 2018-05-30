@@ -7,7 +7,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   height: 100vh;
-  padding: 0 20px;
+  padding: 0 35px;
 
   ${breakpoint('sm')`
     padding: 0 50px;  
@@ -18,9 +18,15 @@ const Content = styled.div``;
 
 const Name = styled.h1`
   color: #032b2f; // daintree
-  font-size: 70px;
-  line-height: 70px;
+  font-size: 60px;
+  line-height: 60px;
   letter-spacing: 8px;
+  margin: 0;
+
+  ${breakpoint('sm_er')`
+    font-size: 70px;
+    line-height: 70px;
+  `};
 
   ${breakpoint('sm')`
     font-size: 80px;

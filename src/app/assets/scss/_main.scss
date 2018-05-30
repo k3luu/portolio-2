@@ -42,6 +42,6 @@ h2 {
     min-height: calc(100vh - #{$header-height});
 
     @include bp-xsmall {
-        padding: 20px;
+        padding: 20px 35px;
     }
 }
