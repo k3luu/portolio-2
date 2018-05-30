@@ -5,6 +5,7 @@ import breakpoint from 'styled-components-breakpoint';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faEnvelope from '@fortawesome/fontawesome-free-regular/faEnvelope';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import config from '../../SiteConfig';
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
