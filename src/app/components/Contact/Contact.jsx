@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
@@ -8,6 +9,7 @@ import faEnvelope from '@fortawesome/fontawesome-free-regular/faEnvelope';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import config from '../../SiteConfig';
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
+import Map from '../Map/Map';
 
 const Container = styled.div``;
 
@@ -129,13 +131,7 @@ class Contact extends React.Component {
       <Container id="contact" className="body">
         <h2>Contact Me</h2>
 
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d203131.14141825392!2d-121.95749543746112!3d37.29693300460036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fcae48af93ff5%3A0xb99d8c0aca9f717b!2sSan+Jose%2C+CA!5e0!3m2!1sen!2sus!4v1527199098723"
-          width="100%"
-          height="300"
-          frameBorder="0"
-          allowFullScreen
-        />
+        <Map />
 
         <Content>
           <Info>
