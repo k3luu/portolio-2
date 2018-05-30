@@ -1,6 +1,4 @@
-/*eslint-disable*/
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import IconButton from '@material-ui/core/IconButton';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
