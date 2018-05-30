@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -6,8 +5,6 @@ import breakpoint from 'styled-components-breakpoint';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faEnvelope from '@fortawesome/fontawesome-free-regular/faEnvelope';
-import faLinkedinIn from '@fortawesome/fontawesome-free-brands/faLinkedinIn';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import config from '../../SiteConfig';
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
@@ -101,10 +98,33 @@ const MessageBox = styled.div`
   }
 `;
 
-const SocialLink = props => <a target="_blank" rel="noopener noreferrer" {...props} />;
+const validateEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 class Contact extends React.Component {
+  state = {
+    error: {
+      name: false,
+      email: false,
+      message: false
+    }
+  };
+
+  handleValidation = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+    const validationObj = Object.assign({}, this.state.error);
+
+    if (name === 'email') {
+      validationObj[name] = !validateEmail.test(value);
+    } else if (value !== '') validationObj[name] = false;
+    else validationObj[name] = true;
+
+    this.setState({ error: validationObj });
+  };
+
   render() {
+    const { error } = this.state;
+
     return (
       <Container id="contact" className="body">
         <h2>Contact Me</h2>
@@ -132,20 +152,40 @@ class Contact extends React.Component {
               <CopyToClipboard text={config.email}>
                 <Note>(Copy address)</Note>
               </CopyToClipboard>
-              {/*<a href={`mailto:${config.linkedIn}`}>*/}
-              {/*<FontAwesomeIcon icon={faLinkedinIn} style={{ color: '#0077B5', fontSize: 16, marginTop: 10 }} /> View my*/}
-              {/*LinkedIn profile*/}
-              {/*</a>*/}
             </MailContainer>
           </Info>
           <Form name="contact" method="POST" action="/success" data-netlify="true">
             <input type="hidden" name="form-name" value="contact" />
             <TextBox>
-              <TextField id="name" name="name" label="Name" style={{ flexGrow: 1 }} />
-              <TextField id="email" name="email" label="Email" style={{ flexGrow: 1 }} />
+              <TextField
+                name="name"
+                label="Name"
+                style={{ flexGrow: 1 }}
+                error={error['name']}
+                onChange={this.handleValidation}
+                required
+              />
+              <TextField
+                type="email"
+                name="email"
+                label="Email"
+                style={{ flexGrow: 1 }}
+                error={error['email']}
+                onChange={this.handleValidation}
+                required
+              />
             </TextBox>
             <MessageBox>
-              <TextField id="message" name="message" label="Message" multiline rows="4" fullWidth />
+              <TextField
+                name="message"
+                label="Message"
+                multiline
+                rows="4"
+                fullWidth
+                error={error['message']}
+                onChange={this.handleValidation}
+                required
+              />
             </MessageBox>
 
             <Button type="submit" className="hp-mt50" variant="raised" color="secondary">
