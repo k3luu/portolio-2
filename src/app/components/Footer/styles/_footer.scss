@@ -1,8 +1,0 @@
-@import '../../../assets/scss/mixins/breakpoints';
-@import '../../../assets/scss/variables';
-
-.footer {
-    @include bp-xsmall {
-        display: none
-    }
-}

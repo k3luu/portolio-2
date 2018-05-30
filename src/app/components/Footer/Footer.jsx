@@ -5,7 +5,7 @@ import breakpoint from 'styled-components-breakpoint';
 const FooterBar = styled.div`
   background: #f6f9fd;
   box-sizing: border-box;
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   height: 50px;
@@ -15,13 +15,14 @@ const FooterBar = styled.div`
   bottom: 0;
 
   ${breakpoint('sm')`
+    display: flex;
     padding: 0 50px;  
   `};
 `;
 
 class Footer extends React.Component {
   render() {
-    return <FooterBar>© Kathy Luu 2018</FooterBar>;
+    return <FooterBar clas>© Kathy Luu 2018</FooterBar>;
   }
 }
 
