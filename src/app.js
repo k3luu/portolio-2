@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { combineReducers, createStore } from 'redux';
 import 'whatwg-fetch';
 import 'babel-polyfill';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -9,10 +11,11 @@ import { ThemeProvider } from 'styled-components';
 import _ from 'lodash';
 import Styles from './app/assets/scss/style.scss';
 /*eslint-enable*/
-// import { Provider } from 'react-redux';
-// import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 
-//components
+// Reducers
+import { mainState } from './app/components/appReducers';
+
+// Components
 import AppIndex from './app/components/appIndex';
 import Success from './app/components/Success/Success';
 import { MyTheme } from './app/components/MUI/MyTheme';
@@ -28,15 +31,19 @@ const breakPointsTheme = {
   }
 };
 
+const appStore = createStore(combineReducers({ mainState }));
+
 ReactDOM.render(
   <ThemeProvider theme={breakPointsTheme}>
     <MuiThemeProvider theme={MyTheme}>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/success" component={Success} name="Success" />
-          <Route path="/" component={AppIndex} name="AppIndex" />
-        </Switch>
-      </BrowserRouter>
+      <Provider store={appStore}>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/success" component={Success} name="Success" />
+            <Route path="/" component={AppIndex} name="AppIndex" />
+          </Switch>
+        </BrowserRouter>
+      </Provider>
     </MuiThemeProvider>
   </ThemeProvider>,
   document.getElementById('app')
