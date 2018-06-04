@@ -7,6 +7,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Collapse from '@material-ui/core/Collapse';
+import { projects } from './projects';
 // images
 import thh from './images/thh.png';
 import luusfilm from './images/luusfilm.png';
@@ -14,16 +15,20 @@ import portfolio from './images/portfolio.png';
 
 const Container = styled.div``;
 
+const SingleCard = styled.div``;
+
 const CardContainer = styled.div`
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
+  align-content: center;
+  height: 1200px;
 `;
 
 const styles = {
   card: {
     maxWidth: 400,
     width: 400,
-    margin: 10
+    margin: 15
   },
   media: {
     cursor: 'pointer',
@@ -34,46 +39,41 @@ const styles = {
 };
 
 class Projects extends React.Component {
-  state = { expanded: false };
+  state = { cardsCollapsed: {} };
+
+  handleCardCollapse = id => {
+    const { cardsCollapsed } = this.state;
+    cardsCollapsed[id] = !cardsCollapsed[id];
+    this.setState({ cardsCollapsed });
+  };
 
   render() {
     const { classes } = this.props;
+    const { cardsCollapsed } = this.state;
 
     return (
       <Container id="projects" className="body">
         <h2>Projects</h2>
 
         <CardContainer>
-          <Card className={classes.card}>
-            <CardMedia
-              className={classes.media}
-              image={thh}
-              title="THH Header"
-              onClick={() => this.setState({ expanded: !this.state.expanded })}
-            />
-            <CardContent>
-              <h4>Two Half-Hitches</h4>
-              <div>Blog</div>
-            </CardContent>
-            <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-              <CardContent>Some Informationnnnn</CardContent>
-            </Collapse>
-          </Card>
-
-          <Card className={classes.card}>
-            <CardMedia className={classes.media} image={luusfilm} title="Luusfilm Header" />
-            <CardContent>
-              <h4>Luusfilm</h4>
-              <div>Blog</div>
-            </CardContent>
-          </Card>
-
-          <Card className={classes.card}>
-            <CardMedia className={classes.media} image={portfolio} title="Portfolio Header" />
-            <CardContent>
-              <h4>Portfolio</h4>
-            </CardContent>
-          </Card>
+          {projects.map(p => (
+            <SingleCard key={p.id}>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.media}
+                  image={p.image}
+                  title={p.alt_name}
+                  onClick={() => this.handleCardCollapse(p.id)}
+                />
+                <CardContent>
+                  <h4>{p.name}</h4>
+                </CardContent>
+                <Collapse in={cardsCollapsed[p.id]} timeout="auto" unmountOnExit>
+                  <CardContent>{p.description}</CardContent>
+                </Collapse>
+              </Card>
+            </SingleCard>
+          ))}
         </CardContainer>
       </Container>
     );
