@@ -1,9 +1,13 @@
+/*eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { withStyles } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 
 const Container = styled.div``;
 
@@ -88,6 +92,15 @@ class About extends React.Component {
         </ChipContainer>
 
         <h5 className="hp-mt50">Education</h5>
+
+        <Card>
+          <CardContent>
+            <div>UC San Diego</div>
+            <div>B.S. Computer Science</div>
+            <div>2011-2016</div>
+          </CardContent>
+        </Card>
+
         <h5 className="hp-mt50">Interests</h5>
       </Container>
     );
