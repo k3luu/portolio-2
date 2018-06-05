@@ -71,15 +71,12 @@ class Map extends Component {
     }
   };
 
-  componentDidMount() {
-    console.log('finished mounting');
-    // this.props.stateOnChange(APP_ON_LOAD);
-  }
-
   render() {
+    const { mainState } = this.props;
+
     // Important! Always set the container height explicitly
     return (
-      <div className="map" style={{ height: '300px', width: '100%' }}>
+      <div style={mainState.loading ? { height: '100px', width: '100%' } : { height: '300px', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyAz5oFsltDk6fb1_Zp69pzHfejXpbPP6KQ' }}
           defaultCenter={this.props.center}

@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -11,20 +10,19 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import config from '../../SiteConfig';
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
 import Map from '../Map/Map';
-import { APP_ON_LOAD, stateOnChange } from '../appActions';
 
 const mapStateToProps = state => ({
   mainState: state.mainState
 });
 
-const mapDispatchToProps = dispatch => ({
-  stateOnChange: (type, data) => dispatch(stateOnChange(type, data))
-});
-
-const Container = styled.div``;
+const Container = styled.div`
+  min-height: ${props => (props.loading ? 0 : 'inherit')};
+  height: ${props => (props.loading ? 0 : 'inherit')};
+  padding: ${props => (props.loading ? 0 : 'inherit')};
+`;
 
 const Content = styled.div`
-  display: flex;
+  display: ${props => (props.loading ? 'none' : 'flex')};
   flex-direction: column;
   margin-top: 40px;
   height: 300px;
@@ -121,11 +119,6 @@ class Contact extends React.Component {
     }
   };
 
-  componentDidMount() {
-    console.log('finished mounting');
-    // this.props.stateOnChange(APP_ON_LOAD);
-  }
-
   handleValidation = e => {
     const name = e.target.name;
     const value = e.target.value;
@@ -140,15 +133,16 @@ class Contact extends React.Component {
   };
 
   render() {
+    const { mainState } = this.props;
     const { error } = this.state;
 
     return (
-      <Container id="contact" className="body">
-        <h2>Contact Me</h2>
+      <Container id="contact" className="body" loading={mainState.loading}>
+        {!mainState.loading && <h2>Contact Me</h2>}
 
         <Map />
 
-        <Content>
+        <Content loading={mainState.loading}>
           <Info>
             <h4 className="hp-mb30">Get in touch</h4>
 
@@ -209,4 +203,4 @@ class Contact extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Contact);
+export default connect(mapStateToProps)(Contact);

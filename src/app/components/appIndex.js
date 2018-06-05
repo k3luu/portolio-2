@@ -20,11 +20,11 @@ const mapDispatchToProps = dispatch => ({
 
 const AppContainer = styled.div`
   position: relative;
+  overflow: ${props => (props.loading ? 'hidden' : 'visible')};
 `;
 
 class AppIndex extends React.Component {
   componentDidMount() {
-    // console.log('finished mounting');
     setTimeout(() => this.props.stateOnChange(APP_ON_LOAD), 3000);
   }
 
@@ -32,22 +32,8 @@ class AppIndex extends React.Component {
     console.log('appIndex', this.props);
     const { mainState } = this.props;
 
-    // if (mainState.loading)
-    //   return (
-    //     <div className="container">
-    //       <ul>
-    //         <li />
-    //         <li />
-    //         <li />
-    //         <li />
-    //         <li />
-    //       </ul>
-    //     </div>
-    //   );
-
     return (
-      <AppContainer>
-        {/*<Header />*/}
+      <AppContainer loading={mainState.loading}>
         {!mainState.loading && <Header />}
 
         {mainState.loading ? (
