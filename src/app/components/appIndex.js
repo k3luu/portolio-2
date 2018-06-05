@@ -65,11 +65,12 @@ class AppIndex extends React.Component {
         )}
 
         {/*<Home />*/}
-        <Projects />
-        <About />
-        <Contact />
-
-        <Footer />
+        <div className={mainState.loading ? 'hp-hide' : ''}>
+          <Projects />
+          <About />
+          <Contact />
+          <Footer />
+        </div>
       </AppContainer>
     );
   }
