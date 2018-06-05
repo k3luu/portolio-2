@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import TextField from '@material-ui/core/TextField';
@@ -10,6 +11,15 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import config from '../../SiteConfig';
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
 import Map from '../Map/Map';
+import { APP_ON_LOAD, stateOnChange } from '../appActions';
+
+const mapStateToProps = state => ({
+  mainState: state.mainState
+});
+
+const mapDispatchToProps = dispatch => ({
+  stateOnChange: (type, data) => dispatch(stateOnChange(type, data))
+});
 
 const Container = styled.div``;
 
@@ -111,6 +121,11 @@ class Contact extends React.Component {
     }
   };
 
+  componentDidMount() {
+    console.log('finished mounting');
+    // this.props.stateOnChange(APP_ON_LOAD);
+  }
+
   handleValidation = e => {
     const name = e.target.name;
     const value = e.target.value;
@@ -194,4 +209,4 @@ class Contact extends React.Component {
   }
 }
 
-export default Contact;
+export default connect(mapStateToProps, mapDispatchToProps)(Contact);
