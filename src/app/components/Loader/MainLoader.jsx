@@ -11,6 +11,7 @@ const Container = styled.div`
 
 const Ul = styled.ul`
   display: flex;
+  padding: 0;
 `;
 
 const Li = styled.li`
