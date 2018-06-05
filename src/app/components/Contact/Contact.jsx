@@ -16,9 +16,9 @@ const mapStateToProps = state => ({
 });
 
 const Container = styled.div`
-  min-height: ${props => (props.loading ? 0 : 'inherit')};
-  height: ${props => (props.loading ? 0 : 'inherit')};
-  padding: ${props => (props.loading ? 0 : 'inherit')};
+  min-height: ${props => (props.loading ? 0 : '')};
+  height: ${props => (props.loading ? 0 : '')};
+  padding: ${props => (props.loading ? 0 : '')};
 `;
 
 const Content = styled.div`
@@ -159,6 +159,7 @@ class Contact extends React.Component {
               </CopyToClipboard>
             </MailContainer>
           </Info>
+
           <Form name="contact" method="POST" action="/success" data-netlify="true">
             <input type="hidden" name="form-name" value="contact" />
             <TextBox>

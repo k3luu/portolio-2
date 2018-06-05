@@ -1,16 +1,11 @@
-/*eslint-disable*/
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import styled from 'styled-components';
 import GoogleMapReact from 'google-map-react';
-import { stateOnChange, APP_ON_LOAD } from '../appActions';
 
-const mapStateToProps = state => ({
-  mainState: state.mainState
-});
-
-const mapDispatchToProps = dispatch => ({
-  stateOnChange: (type, data) => dispatch(stateOnChange(type, data))
-});
+const Container = styled.div`
+  height: 300px;
+  width: 100%;
+`;
 
 class Map extends Component {
   static defaultProps = {
@@ -72,20 +67,18 @@ class Map extends Component {
   };
 
   render() {
-    const { mainState } = this.props;
-
     // Important! Always set the container height explicitly
     return (
-      <div style={mainState.loading ? { height: '100px', width: '100%' } : { height: '300px', width: '100%' }}>
+      <Container>
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyAz5oFsltDk6fb1_Zp69pzHfejXpbPP6KQ' }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
           options={this.props.options}
         />
-      </div>
+      </Container>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Map);
+export default Map;

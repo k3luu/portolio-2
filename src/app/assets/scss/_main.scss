@@ -48,16 +48,6 @@ h2 {
     }
 }
 
-.hp-hide {
-    visibility: hidden;
-    height: 0;
-    max-height: 0;
-
-    > div:not(#contact) {
-        display: none
-    }
-}
-
 // loader
 @mixin anim($i){
     $y: ($i + 5) * 10;
@@ -72,24 +62,7 @@ h2 {
     }
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-}
-
 ul {
-    display: flex;
-    li {
-        width: 20px;
-        height: 20px;
-        margin: 10px;
-        list-style-type: none;
-        transition: 0.5s all ease;
-    }
-
     @for $i from 1 through 5 {
         li:nth-child(#{$i}) {
             @include anim($i);

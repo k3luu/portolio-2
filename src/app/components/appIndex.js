@@ -1,7 +1,7 @@
-/*eslint-disable*/
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import MainLoader from './Loader/MainLoader';
 import Header from './Header/Header';
 import Home from './Home/Home';
 import About from './About/About';
@@ -28,35 +28,39 @@ class AppIndex extends React.Component {
     setTimeout(() => this.props.stateOnChange(APP_ON_LOAD), 3000);
   }
 
+  renderComponent(type) {
+    const { mainState } = this.props;
+
+    switch (type) {
+      case 'loader':
+        return mainState.loading && <MainLoader />;
+      case 'header':
+        return !mainState.loading && <Header />;
+      case 'home':
+        return !mainState.loading && <Home />;
+      case 'projects':
+        return !mainState.loading && <Projects />;
+      case 'about':
+        return !mainState.loading && <About />;
+      case 'contact':
+        return <Contact />;
+      case 'footer':
+        return !mainState.loading && <Footer />;
+    }
+  }
+
   render() {
-    console.log('appIndex', this.props);
     const { mainState } = this.props;
 
     return (
       <AppContainer loading={mainState.loading}>
-        {!mainState.loading && <Header />}
-
-        {mainState.loading ? (
-          <div className="container">
-            <ul>
-              <li />
-              <li />
-              <li />
-              <li />
-              <li />
-            </ul>
-          </div>
-        ) : (
-          <Home />
-        )}
-
-        {/*<Home />*/}
-        <div className={mainState.loading ? 'hp-hide' : ''}>
-          <Projects />
-          <About />
-          <Contact />
-          <Footer />
-        </div>
+        {this.renderComponent('loader')}
+        {this.renderComponent('header')}
+        {this.renderComponent('home')}
+        {this.renderComponent('projects')}
+        {this.renderComponent('about')}
+        {this.renderComponent('contact')}
+        {this.renderComponent('footer')}
       </AppContainer>
     );
   }
