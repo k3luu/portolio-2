@@ -11,6 +11,8 @@ import Collapse from '@material-ui/core/Collapse';
 import Button from '@material-ui/core/Button';
 import { projects } from './projects';
 
+const MyLink = props => <a {...props} target="_blank" rel="noopener noreferrer" />;
+
 const Container = styled.div``;
 
 const SingleCard = styled.div`
@@ -30,15 +32,16 @@ const CardContainer = styled.div`
 
   ${breakpoint('sm')`
     flex-flow: column wrap;
-    height: 1400px;
+    height: 1200px;
   `};
 `;
 
 const styles = theme => ({
   card: {
     maxWidth: '100%',
-    minHeight: 400,
+    minHeight: 450,
     margin: 15,
+    position: 'relative',
     [theme.breakpoints.up('sm')]: {
       maxWidth: 400
     }
@@ -46,8 +49,16 @@ const styles = theme => ({
   media: {
     cursor: 'pointer',
     height: 100,
-    borderBottom: '1px solid #032b2f', // daintree
-    paddingTop: '56.25%' // 16:9
+    borderBottom: '1px solid #56b1bf', // fountain-blue
+    paddingTop: '40%'
+  },
+  actionRootClosed: {
+    position: 'absolute',
+    bottom: 0
+    // transition: '0.3s'
+  },
+  actionRootOpen: {
+    transition: '0.3s'
   }
 });
 
@@ -80,10 +91,20 @@ class Projects extends React.Component {
                 />
                 <CardContent>
                   <h4>{p.name}</h4>
+                  {p.description}
                 </CardContent>
                 <CardActions>
-                  <Button color="primary" onClick={() => this.handleCardCollapse(p.id)}>
-                    Learn More
+                  <Button size="small" color="primary" onClick={() => this.handleCardCollapse(p.id)}>
+                    {cardsCollapsed[p.id] ? 'Collapse' : 'Expand'}
+                  </Button>
+                  <Button
+                    size="small"
+                    component={MyLink}
+                    href={p.href}
+                    color="primary"
+                    onClick={() => this.handleCardCollapse(p.id)}
+                  >
+                    Visit
                   </Button>
                 </CardActions>
                 <Collapse in={cardsCollapsed[p.id]} timeout="auto" unmountOnExit>

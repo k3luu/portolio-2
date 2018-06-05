@@ -5,13 +5,13 @@ import rpadm from './images/rpadm.png';
 
 export const projects = [
   {
-    id: 0,
-    name: 'Two Half-Hitches',
-    image: thh,
-    alt_name: 'THH Header',
-    href: 'https://admiring-yalow-846eea.netlify.com',
+    id: 3,
+    name: 'Doctor.com Provider Admin',
+    image: rpadm,
+    alt_name: 'DDC RPADM Header',
+    href: 'https://www.doctor.com/solutions/universal-scheduling',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      'An administrative dashboard for healthcare providers to manage their listings, reviews, and appointments.'
   },
   {
     id: 1,
@@ -19,25 +19,23 @@ export const projects = [
     image: luusfilm,
     alt_name: 'Luusfilm Header',
     href: 'https://luusfilm.tumblr.com',
+    description: 'My personal photography blog hosted on Tumblr. Uses a custom theme made my yours truly.'
+  },
+  {
+    id: 0,
+    name: 'Two Half-Hitches',
+    image: thh,
+    alt_name: 'THH Header',
+    href: 'https://admiring-yalow-846eea.netlify.com',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      'Redesigned the website for Two Half-Hitches, an org dedicated to guiding explorers on their outdoor journeys.'
   },
   {
     id: 2,
     name: 'Portfolio',
     image: portfolio,
     alt_name: 'Portfolio Header',
-    href: 'kathyluu.io',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-  },
-  {
-    id: 3,
-    name: 'Doctor.com Provider Admin',
-    image: rpadm,
-    alt_name: 'DDC RPADM Header',
-    href: 'https://www.doctor.com/solutions/universal-scheduling',
-    description:
-      'An administrative dashboard where healthcare providers can track their listings, reviews, appointments, and overall reputation.'
+    href: 'http://kathyluu.io',
+    description: 'My portfolio, built with React, Webpack, amongst other tools and packages.'
   }
 ];

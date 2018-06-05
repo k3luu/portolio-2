@@ -25,7 +25,7 @@ const AppContainer = styled.div`
 
 class AppIndex extends React.Component {
   componentDidMount() {
-    setTimeout(() => this.props.stateOnChange(APP_ON_LOAD), 3000);
+    setTimeout(() => this.props.stateOnChange(APP_ON_LOAD), 2000);
   }
 
   renderComponent(type) {
