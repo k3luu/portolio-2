@@ -47,7 +47,8 @@ class AppIndex extends React.Component {
 
     return (
       <AppContainer>
-        <Header />
+        {/*<Header />*/}
+        {!mainState.loading && <Header />}
 
         {mainState.loading ? (
           <div className="container">
