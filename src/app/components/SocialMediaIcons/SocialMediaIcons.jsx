@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import styled from 'styled-components';
 import IconButton from '@material-ui/core/IconButton';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
@@ -15,22 +16,24 @@ const Container = styled.div`
   padding: 0 10px;
 `;
 
-const SocialLink = props => <a target="_blank" rel="noopener noreferrer" {...props} />;
+const SocialLink = props => (
+  <ReactGA.OutboundLink eventLabel={props.to} target="_blank" rel="noopener noreferrer" {...props} />
+);
 
 class SocialMediaIcons extends React.Component {
   render() {
     return (
       <Container>
-        <IconButton component={SocialLink} href={`${config.linkedIn}`}>
+        <IconButton component={SocialLink} to={`${config.linkedIn}`}>
           <FontAwesomeIcon icon={faLinkedinIn} />
         </IconButton>
-        <IconButton component={SocialLink} href={`${config.github}`}>
+        <IconButton component={SocialLink} to={`${config.github}`}>
           <FontAwesomeIcon icon={faGithub} />
         </IconButton>
-        <IconButton component={SocialLink} href={`${config.instagram}`}>
+        <IconButton component={SocialLink} to={`${config.instagram}`}>
           <FontAwesomeIcon icon={faInstagram} />
         </IconButton>
-        <IconButton component={SocialLink} href={`mailto:${config.email}`}>
+        <IconButton component={SocialLink} to={`mailto:${config.email}`}>
           <FontAwesomeIcon icon={faEnvelope} />
         </IconButton>
       </Container>

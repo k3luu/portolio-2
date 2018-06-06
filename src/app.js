@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
 import 'whatwg-fetch';
 import 'babel-polyfill';
+import ReactGA from 'react-ga';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { ThemeProvider } from 'styled-components';
@@ -32,6 +33,13 @@ const breakPointsTheme = {
 };
 
 const appStore = createStore(combineReducers({ mainState }));
+
+ReactGA.initialize('UA-120449052-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
+
+// if (NODE_ENV === 'production') {
+// } else {
+// }
 
 ReactDOM.render(
   <ThemeProvider theme={breakPointsTheme}>

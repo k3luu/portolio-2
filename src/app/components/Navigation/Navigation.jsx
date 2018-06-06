@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import ReactGA from 'react-ga';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
@@ -44,6 +45,12 @@ class Navigation extends React.Component {
     });
 
     document.getElementById(match).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    ReactGA.event({
+      category: 'Navigation',
+      action: 'Clicked on a tab',
+      label: match
+    });
+
     this.setState({ value });
   };
 
