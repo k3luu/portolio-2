@@ -3,6 +3,10 @@ import luusfilm from './images/luusfilm.png';
 import portfolio from './images/portfolio.png';
 import rpadm from './images/rpadm.png';
 
+/**
+ * *Descriptions need to be short so that all the cards' heights are aligned.
+ * @type {*[]}
+ */
 export const projectData = [
   {
     id: 3,
@@ -31,7 +35,7 @@ export const projectData = [
     href: 'https://admiring-yalow-846eea.netlify.com',
     github: 'https://github.com/k3luu/thh',
     description:
-      'Redesigned the website for Two Half-Hitches, an organization dedicated to guiding explorers on their outdoor journeys.',
+      'Redesigned the website for Two Half-Hitches, a team dedicated to guiding explorers on their outdoor journeys.',
     tools: ['React', 'Gatsby', 'Gestalt']
   },
   {
