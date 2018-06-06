@@ -38,7 +38,7 @@ class AppIndex extends React.Component {
         return !mainState.loading && <Header />;
       case 'home':
         return !mainState.loading && <Home />;
-      case 'projects':
+      case 'projectData':
         return !mainState.loading && <Projects />;
       case 'about':
         return !mainState.loading && <About />;
@@ -57,7 +57,7 @@ class AppIndex extends React.Component {
         {this.renderComponent('loader')}
         {this.renderComponent('header')}
         {this.renderComponent('home')}
-        {this.renderComponent('projects')}
+        {this.renderComponent('projectData')}
         {this.renderComponent('about')}
         {this.renderComponent('contact')}
         {this.renderComponent('footer')}

@@ -83,7 +83,7 @@ class About extends React.Component {
           photography, classic pen and pencil sketching, or paint by numbers.
         </p>
 
-        <h5 className="hp-mt50">Skills</h5>
+        <h4 className="hp-mt50">Skills</h4>
 
         <ChipContainer>
           {_.map(skills, p => (
@@ -91,7 +91,7 @@ class About extends React.Component {
           ))}
         </ChipContainer>
 
-        <h5 className="hp-mt50">Education</h5>
+        <h4 className="hp-mt50">Education</h4>
 
         <Card>
           <CardContent>
@@ -101,7 +101,7 @@ class About extends React.Component {
           </CardContent>
         </Card>
 
-        <h5 className="hp-mt50">Interests</h5>
+        <h4 className="hp-mt50">Interests</h4>
       </Container>
     );
   }

@@ -9,7 +9,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Collapse from '@material-ui/core/Collapse';
 import Button from '@material-ui/core/Button';
-import { projects } from './projects';
+import { projectData } from './projectData';
 
 const MyLink = props => <a {...props} target="_blank" rel="noopener noreferrer" />;
 
@@ -51,14 +51,6 @@ const styles = theme => ({
     height: 100,
     borderBottom: '1px solid #56b1bf', // fountain-blue
     paddingTop: '40%'
-  },
-  actionRootClosed: {
-    position: 'absolute',
-    bottom: 0
-    // transition: '0.3s'
-  },
-  actionRootOpen: {
-    transition: '0.3s'
   }
 });
 
@@ -71,6 +63,17 @@ class Projects extends React.Component {
     this.setState({ cardsCollapsed });
   };
 
+  renderTools = list => {
+    let toolStr = '';
+
+    _.map(list, obj => {
+      if (toolStr.length > 0) toolStr += ', ';
+      toolStr += obj;
+    });
+
+    return toolStr;
+  };
+
   render() {
     const { classes } = this.props;
     const { cardsCollapsed } = this.state;
@@ -80,7 +83,7 @@ class Projects extends React.Component {
         <h2>Projects</h2>
 
         <CardContainer>
-          {projects.map(p => (
+          {projectData.map(p => (
             <SingleCard key={p.id}>
               <Card className={classes.card}>
                 <CardMedia
@@ -89,26 +92,31 @@ class Projects extends React.Component {
                   title={p.alt_name}
                   onClick={() => this.handleCardCollapse(p.id)}
                 />
+
                 <CardContent>
                   <h4>{p.name}</h4>
                   {p.description}
                 </CardContent>
+
                 <CardActions>
                   <Button size="small" color="primary" onClick={() => this.handleCardCollapse(p.id)}>
                     {cardsCollapsed[p.id] ? 'Collapse' : 'Expand'}
                   </Button>
-                  <Button
-                    size="small"
-                    component={MyLink}
-                    href={p.href}
-                    color="primary"
-                    onClick={() => this.handleCardCollapse(p.id)}
-                  >
+                  <Button size="small" component={MyLink} href={p.href} color="primary">
                     Visit
                   </Button>
+                  {p.github && (
+                    <Button size="small" component={MyLink} href={p.github} color="primary">
+                      Github
+                    </Button>
+                  )}
                 </CardActions>
+
                 <Collapse in={cardsCollapsed[p.id]} timeout="auto" unmountOnExit>
-                  <CardContent>{p.description}</CardContent>
+                  <CardContent>
+                    <h5>Tools</h5>
+                    <div>{this.renderTools(p.tools)}</div>
+                  </CardContent>
                 </Collapse>
               </Card>
             </SingleCard>

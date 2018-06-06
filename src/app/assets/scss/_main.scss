@@ -37,6 +37,11 @@ h2 {
     letter-spacing: 4px;
 }
 
+h5 {
+    margin: 0;
+    text-decoration: underline;
+}
+
 .body {
     padding: $header-height 50px 0 50px;
     min-height: calc(100vh - #{$header-height});
