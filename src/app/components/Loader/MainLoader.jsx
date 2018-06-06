@@ -26,7 +26,7 @@ class MainLoader extends React.Component {
   render() {
     return (
       <Container>
-        <Ul>
+        <Ul id="loader">
           <Li />
           <Li />
           <Li />

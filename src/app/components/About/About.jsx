@@ -6,7 +6,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 
 const Container = styled.div``;
@@ -102,6 +101,11 @@ class About extends React.Component {
         </Card>
 
         <h4 className="hp-mt50">Interests</h4>
+        <ul>
+          <li>Reading</li>
+          <li>Photography</li>
+          <li>Drawing</li>
+        </ul>
       </Container>
     );
   }

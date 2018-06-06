@@ -67,7 +67,7 @@ h5 {
     }
 }
 
-ul {
+ul#loader {
     @for $i from 1 through 5 {
         li:nth-child(#{$i}) {
             @include anim($i);
