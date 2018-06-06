@@ -34,12 +34,13 @@ const breakPointsTheme = {
 
 const appStore = createStore(combineReducers({ mainState }));
 
-ReactGA.initialize('UA-120449052-1');
-ReactGA.pageview(window.location.pathname + window.location.search);
+if (NODE_ENV === 'production') {
+  ReactGa.initialize('UA-120444900-1');
+} else {
+  ReactGA.initialize('UA-120449052-1');
+}
 
-// if (NODE_ENV === 'production') {
-// } else {
-// }
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 ReactDOM.render(
   <ThemeProvider theme={breakPointsTheme}>

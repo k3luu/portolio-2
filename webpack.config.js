@@ -15,6 +15,7 @@ const PACKAGE = require('./package.json');
 
 const sourcePath = path.join(__dirname, './src');
 const staticsPath = path.join(__dirname, './build');
+const port = 8080;
 
 module.exports = function(env) {
   const nodeEnv = env && env.prod ? 'production' : 'development';
@@ -26,10 +27,10 @@ module.exports = function(env) {
       minChunks: Infinity,
       filename: isProd ? '[name].bundle.[hash:6].js' : '[name].bundle.js'
     }),
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: nodeEnv
-    }),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
+    new webpack.DefinePlugin({
+      NODE_ENV: JSON.stringify(nodeEnv)
+    })
   ];
 
   if (isProd) {
@@ -37,6 +38,9 @@ module.exports = function(env) {
       new webpack.LoaderOptionsPlugin({
         minimize: true,
         debug: false
+      }),
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify('production')
       }),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
@@ -103,13 +107,13 @@ module.exports = function(env) {
         // BrowserSync options
         {
           host: 'localhost',
-          port: 8080,
+          port: port,
           open: false,
           // proxy the Webpack Dev Server endpoint
           // (which should be serving on http://localhost:8080/)
           // through BrowserSync
           proxy: 'http://localhost:8080/',
-          logPrefix: 'JB'
+          logPrefix: 'KL'
         },
         // plugin options
         {
@@ -124,7 +128,11 @@ module.exports = function(env) {
       new StyleLintPlugin({
         files: './app/assets/scss/**/*.scss'
       }),
-      new FlowBabelWebpackPlugin()
+      new FlowBabelWebpackPlugin(),
+      new webpack.DefinePlugin({
+        NODE_ENV: JSON.stringify(nodeEnv),
+        PORT: JSON.stringify(port)
+      })
     );
   }
 
@@ -264,7 +272,7 @@ module.exports = function(env) {
     devServer: {
       contentBase: './src',
       historyApiFallback: true,
-      port: 8080,
+      port: port,
       compress: isProd,
       inline: !isProd,
       hot: false,
