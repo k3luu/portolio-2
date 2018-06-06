@@ -72,15 +72,6 @@ class About extends React.Component {
           using React. It's been a whirlwind of learning and I'm honored to be a part of such an enormous project. We're
           about to release!
         </p>
-        <p>
-          Outside of work, I spend A LOT of time with my brat of a dog, Pim. Goals with her include being featured on{' '}
-          <a href="https://www.instagram.com/dogsthathike/" target="_blank" rel="noopener noreferrer">
-            @dogsthathike
-          </a>{' '}
-          and being an all-around good citizen. When I do finally get some time to myself, I really enjoy reading. I
-          love fantasy fiction and I'll happily take any recommendations. I take a lot of pleasure in art, whether it's
-          photography, classic pen and pencil sketching, or paint by numbers.
-        </p>
 
         <h4 className="hp-mt50">Skills</h4>
 

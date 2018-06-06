@@ -31,7 +31,7 @@ export const projectData = [
     href: 'https://admiring-yalow-846eea.netlify.com',
     github: 'https://github.com/k3luu/thh',
     description:
-      'Redesigned the website for Two Half-Hitches, an org dedicated to guiding explorers on their outdoor journeys.',
+      'Redesigned the website for Two Half-Hitches, an organization dedicated to guiding explorers on their outdoor journeys.',
     tools: ['React', 'Gatsby', 'Gestalt']
   },
   {

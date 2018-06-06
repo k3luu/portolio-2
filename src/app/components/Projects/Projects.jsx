@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import React from 'react';
+import ReactGA from 'react-ga';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { withStyles } from '@material-ui/core/styles';
@@ -11,7 +12,9 @@ import Collapse from '@material-ui/core/Collapse';
 import Button from '@material-ui/core/Button';
 import { projectData } from './projectData';
 
-const MyLink = props => <a {...props} target="_blank" rel="noopener noreferrer" />;
+const MyLink = props => (
+  <ReactGA.OutboundLink eventLabel={props.name} {...props} target="_blank" rel="noopener noreferrer" />
+);
 
 const Container = styled.div``;
 
@@ -57,10 +60,48 @@ const styles = theme => ({
 class Projects extends React.Component {
   state = { cardsCollapsed: {} };
 
-  handleCardCollapse = id => {
+  handleCardCollapse = project => {
     const { cardsCollapsed } = this.state;
-    cardsCollapsed[id] = !cardsCollapsed[id];
+
+    cardsCollapsed[project.id] = !cardsCollapsed[project.id];
+
+    if (cardsCollapsed[project.id]) {
+      ReactGA.event({
+        category: 'Projects',
+        action: 'Expanded a project',
+        label: project.name
+      });
+    }
+
     this.setState({ cardsCollapsed });
+  };
+
+  trackImageClick = project => {
+    const { cardsCollapsed } = this.state;
+
+    if (!cardsCollapsed[project.id]) {
+      ReactGA.event({
+        category: 'Projects',
+        action: 'Expanded a project via IMAGE',
+        label: project.name
+      });
+    }
+
+    this.handleCardCollapse(project);
+  };
+
+  trackExpandClick = project => {
+    const { cardsCollapsed } = this.state;
+
+    if (!cardsCollapsed[project.id]) {
+      ReactGA.event({
+        category: 'Projects',
+        action: 'Expanded a project via BUTTON',
+        label: project.name
+      });
+    }
+
+    this.handleCardCollapse(project);
   };
 
   renderTools = list => {
@@ -90,7 +131,7 @@ class Projects extends React.Component {
                   className={classes.media}
                   image={p.image}
                   title={p.alt_name}
-                  onClick={() => this.handleCardCollapse(p.id)}
+                  onClick={() => this.trackImageClick(p)}
                 />
 
                 <CardContent>
@@ -99,14 +140,14 @@ class Projects extends React.Component {
                 </CardContent>
 
                 <CardActions>
-                  <Button size="small" color="primary" onClick={() => this.handleCardCollapse(p.id)}>
+                  <Button size="small" color="primary" onClick={() => this.trackExpandClick(p)}>
                     {cardsCollapsed[p.id] ? 'Collapse' : 'Expand'}
                   </Button>
-                  <Button size="small" component={MyLink} href={p.href} color="primary">
+                  <Button size="small" component={MyLink} name={'Project - ' + p.name} to={p.href} color="primary">
                     Visit
                   </Button>
                   {p.github && (
-                    <Button size="small" component={MyLink} href={p.github} color="primary">
+                    <Button size="small" component={MyLink} name={'Repo - ' + p.github} to={p.github} color="primary">
                       Github
                     </Button>
                   )}

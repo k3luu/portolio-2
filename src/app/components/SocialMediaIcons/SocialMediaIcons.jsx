@@ -17,7 +17,7 @@ const Container = styled.div`
 `;
 
 const SocialLink = props => (
-  <ReactGA.OutboundLink eventLabel={props.to} target="_blank" rel="noopener noreferrer" {...props} />
+  <ReactGA.OutboundLink eventLabel={'Social Link - ' + props.to} target="_blank" rel="noopener noreferrer" {...props} />
 );
 
 class SocialMediaIcons extends React.Component {
