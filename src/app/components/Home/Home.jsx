@@ -42,6 +42,7 @@ const Title = styled.h3`
   line-height: 16px;
   letter-spacing: 8px;
   opacity: 0.8;
+  margin-left: 3px;
 
   ${breakpoint('sm')`
     font-size: 24px;
