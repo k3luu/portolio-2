@@ -35,7 +35,7 @@ const breakPointsTheme = {
 const appStore = createStore(combineReducers({ mainState }));
 
 if (NODE_ENV === 'production') {
-  ReactGa.initialize('UA-120444900-1');
+  ReactGA.initialize('UA-120444900-1');
 } else {
   ReactGA.initialize('UA-120449052-1');
 }
