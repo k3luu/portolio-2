@@ -52,7 +52,7 @@ const styles = theme => ({
   media: {
     cursor: 'pointer',
     height: 100,
-    borderBottom: '1px solid #56b1bf', // fountain-blue
+    boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.14)',
     paddingTop: '40%'
   }
 });

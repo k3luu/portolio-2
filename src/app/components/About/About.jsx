@@ -7,15 +7,24 @@ import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faUserGraduate from '@fortawesome/fontawesome-free-solid/faUserGraduate';
+import config from '../../SiteConfig';
 
 const Container = styled.div``;
 
 const ChipContainer = styled.div`
-  max-width: 700px;
+  max-width: 750px;
 `;
 
-const styles = () => ({
-  root: {
+const styles = theme => ({
+  eduCard: {
+    width: '50%',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%'
+    }
+  },
+  chipRoot: {
     fontSize: 14,
     margin: 5
   }
@@ -61,6 +70,7 @@ class About extends React.Component {
   };
 
   render() {
+    const { classes } = this.props;
     const { skills } = this.state;
 
     return (
@@ -77,17 +87,23 @@ class About extends React.Component {
 
         <ChipContainer>
           {_.map(skills, p => (
-            <Chip key={p.id} avatar={<Avatar src={p.src} />} label={p.name} classes={this.props.classes} />
+            <Chip key={p.id} avatar={<Avatar src={p.src} />} label={p.name} className={classes.chipRoot} />
           ))}
         </ChipContainer>
 
         <h4 className="hp-mt50">Education</h4>
 
-        <Card>
+        <Card className={classes.eduCard}>
           <CardContent>
-            <div>UC San Diego</div>
-            <div>B.S. Computer Science</div>
-            <div>2011-2016</div>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <FontAwesomeIcon icon={faUserGraduate} style={{ fontSize: 72, color: '#56b1bf' }} />
+              <div className="hp-ml30">
+                <div>UC San Diego</div>
+                <div>B.S. Computer Science</div>
+                <div>Minor: Communication</div>
+                <div>2011-2016</div>
+              </div>
+            </div>
           </CardContent>
         </Card>
 
