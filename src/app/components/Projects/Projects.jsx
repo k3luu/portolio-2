@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React from 'react';
 import ReactGA from 'react-ga';
 import styled from 'styled-components';
@@ -10,8 +9,16 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Collapse from '@material-ui/core/Collapse';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faGithub from '@fortawesome/fontawesome-free-brands/faGithub';
 import { projectData } from './projectData';
 
+/**
+ * Google Analytics component to track external links
+ * @param props
+ * @returns {*}
+ */
 const MyLink = props => (
   <ReactGA.OutboundLink eventLabel={props.name} {...props} target="_blank" rel="noopener noreferrer" />
 );
@@ -42,12 +49,15 @@ const CardContainer = styled.div`
 const styles = theme => ({
   card: {
     maxWidth: '100%',
-    minHeight: 450,
+    minHeight: 460,
     margin: 15,
     position: 'relative',
     [theme.breakpoints.up('sm')]: {
       maxWidth: 400
     }
+  },
+  cardAction: {
+    justifyContent: 'space-between'
   },
   media: {
     cursor: 'pointer',
@@ -60,6 +70,10 @@ const styles = theme => ({
 class Projects extends React.Component {
   state = { cardsCollapsed: {} };
 
+  /**
+   * Expands/collapses a project using its ID
+   * @param project
+   */
   handleCardCollapse = project => {
     const { cardsCollapsed } = this.state;
 
@@ -76,6 +90,10 @@ class Projects extends React.Component {
     this.setState({ cardsCollapsed });
   };
 
+  /**
+   * Triggers project expansion via clicking on project image
+   * @param project
+   */
   trackImageClick = project => {
     const { cardsCollapsed } = this.state;
 
@@ -90,6 +108,10 @@ class Projects extends React.Component {
     this.handleCardCollapse(project);
   };
 
+  /**
+   * Triggers project expansion via 'Expand' button
+   * @param project
+   */
   trackExpandClick = project => {
     const { cardsCollapsed } = this.state;
 
@@ -104,6 +126,12 @@ class Projects extends React.Component {
     this.handleCardCollapse(project);
   };
 
+  /**
+   * Turns the array of tools for a project entry into a string to display
+   *
+   * @param list        array of tools
+   * @returns {string}  string of tools, concat w/ ', '
+   */
   renderTools = list => {
     let toolStr = '';
 
@@ -139,17 +167,20 @@ class Projects extends React.Component {
                   {p.description}
                 </CardContent>
 
-                <CardActions>
-                  <Button size="small" color="primary" onClick={() => this.trackExpandClick(p)}>
-                    {cardsCollapsed[p.id] ? 'Collapse' : 'Expand'}
-                  </Button>
-                  <Button size="small" component={MyLink} name={'Project - ' + p.name} to={p.href} color="primary">
-                    Visit
-                  </Button>
-                  {p.github && (
-                    <Button size="small" component={MyLink} name={'Repo - ' + p.github} to={p.github} color="primary">
-                      Github
+                <CardActions className={classes.cardAction}>
+                  <div>
+                    <Button size="small" color="primary" onClick={() => this.trackExpandClick(p)}>
+                      {cardsCollapsed[p.id] ? 'Collapse' : 'Expand'}
                     </Button>
+                    <Button size="small" component={MyLink} name={'Project - ' + p.name} to={p.href} color="primary">
+                      Visit
+                    </Button>
+                  </div>
+
+                  {p.github && (
+                    <IconButton component={MyLink} name={'Repo - ' + p.github} to={p.github}>
+                      <FontAwesomeIcon icon={faGithub} />
+                    </IconButton>
                   )}
                 </CardActions>
 
