@@ -16,6 +16,11 @@ const Container = styled.div`
   padding: 0 10px;
 `;
 
+/**
+ * Google Analytics component to track external links
+ * @param props
+ * @returns {*}
+ */
 const SocialLink = props => (
   <ReactGA.OutboundLink eventLabel={'Social Link - ' + props.to} target="_blank" rel="noopener noreferrer" {...props} />
 );

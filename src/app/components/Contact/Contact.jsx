@@ -108,33 +108,66 @@ const MessageBox = styled.div`
   }
 `;
 
+let validationObj = () => {
+  return {
+    dirty: false,
+    valid: true
+  };
+};
+
 const validateEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 class Contact extends React.Component {
   state = {
     error: {
-      name: false,
-      email: false,
-      message: false
-    }
+      name: new validationObj(),
+      email: new validationObj(),
+      message: new validationObj()
+    },
+    submitValidation: false
   };
 
+  /**
+   * Iterates through the validation object and determines if form
+   * is okay to submit
+   *
+   * @param validation  validation state object
+   * @returns {boolean} True if form is valid; False if not
+   */
+  checkValidation = validation => {
+    let valid = true;
+
+    for (let key in validation) {
+      if (validation[key].dirty) valid = validation[key].valid ? valid : false;
+      else valid = false;
+    }
+
+    return valid;
+  };
+
+  /**
+   * Updates the validation object as input changes
+   *
+   * @param e
+   */
   handleValidation = e => {
     const name = e.target.name;
     const value = e.target.value;
     const validationObj = Object.assign({}, this.state.error);
 
-    if (name === 'email') {
-      validationObj[name] = !validateEmail.test(value);
-    } else if (value !== '') validationObj[name] = false;
-    else validationObj[name] = true;
+    validationObj[name].dirty = true;
 
-    this.setState({ error: validationObj });
+    if (name === 'email') {
+      validationObj[name].valid = validateEmail.test(value);
+    } else if (value === '') validationObj[name].valid = false;
+    else validationObj[name].valid = true;
+
+    this.setState({ error: validationObj, submitValidation: this.checkValidation(validationObj) });
   };
 
   render() {
     const { mainState } = this.props;
-    const { error } = this.state;
+    const { error, submitValidation } = this.state;
 
     return (
       <Container id="contact" className="body" loading={mainState.loading}>
@@ -167,7 +200,7 @@ class Contact extends React.Component {
                 name="name"
                 label="Name"
                 style={{ flexGrow: 1 }}
-                error={error['name']}
+                error={!error['name'].valid}
                 onChange={this.handleValidation}
                 required
               />
@@ -176,7 +209,7 @@ class Contact extends React.Component {
                 name="email"
                 label="Email"
                 style={{ flexGrow: 1 }}
-                error={error['email']}
+                error={!error['email'].valid}
                 onChange={this.handleValidation}
                 required
               />
@@ -188,13 +221,13 @@ class Contact extends React.Component {
                 multiline
                 rows="4"
                 fullWidth
-                error={error['message']}
+                error={!error['message'].valid}
                 onChange={this.handleValidation}
                 required
               />
             </MessageBox>
 
-            <Button type="submit" className="hp-mt50" variant="raised" color="secondary">
+            <Button type="submit" className="hp-mt50" variant="raised" color="secondary" disabled={!submitValidation}>
               Send
             </Button>
           </Form>

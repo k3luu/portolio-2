@@ -24,10 +24,20 @@ const AppContainer = styled.div`
 `;
 
 class AppIndex extends React.Component {
+  /**
+   * Lets the other components (namely Google Maps) load first
+   */
   componentDidMount() {
     setTimeout(() => this.props.stateOnChange(APP_ON_LOAD), 2000);
   }
 
+  /**
+   * Determines which components to render. MainLoader overtakes
+   * everything when visible.
+   *
+   * @param type
+   * @returns {*}
+   */
   renderComponent(type) {
     const { mainState } = this.props;
 

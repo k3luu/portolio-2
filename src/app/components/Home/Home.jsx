@@ -51,11 +51,11 @@ const Title = styled.h3`
 `;
 
 class Home extends React.Component {
-  constructor() {
-    super();
-    this.state = { show: false };
-  }
+  state = { show: false };
 
+  /**
+   * Triggers the React Reveal Text transition
+   */
   componentDidMount() {
     this.setState({ show: true });
   }

@@ -36,6 +36,13 @@ class Navigation extends React.Component {
     ]
   };
 
+  /**
+   * Sets the current navigation tab and moves the page to the selected
+   * tab.
+   *
+   * @param event
+   * @param value
+   */
   handleChange = (event, value) => {
     const { options } = this.state;
     let match = '/';

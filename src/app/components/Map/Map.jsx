@@ -8,6 +8,13 @@ const Container = styled.div`
 `;
 
 class Map extends Component {
+  /**
+   * Props for the Google Maps appearance.
+   * Center: set to San Jose
+   * Options: map style from snazzy maps
+   * 
+   * @type {{center: {lat: number, lng: number}, zoom: number, options: {styles: *[]}}}
+   */
   static defaultProps = {
     center: {
       lat: 37.33899,
@@ -67,7 +74,6 @@ class Map extends Component {
   };
 
   render() {
-    // Important! Always set the container height explicitly
     return (
       <Container>
         <GoogleMapReact

@@ -9,7 +9,6 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faUserGraduate from '@fortawesome/fontawesome-free-solid/faUserGraduate';
-import config from '../../SiteConfig';
 
 const Container = styled.div``;
 
@@ -123,3 +122,4 @@ About.propTypes = {
 };
 
 export default withStyles(styles)(About);
+/*eslint-enable*/

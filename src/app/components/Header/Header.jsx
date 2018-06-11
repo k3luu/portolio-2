@@ -29,6 +29,9 @@ const SocialContainer = styled.div`
   `};
 `;
 
+/**
+ * Contains the Navigation Tabs & Social Links components
+ */
 class Header extends React.Component {
   render() {
     return (
