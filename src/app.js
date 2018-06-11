@@ -12,7 +12,7 @@ import { ThemeProvider } from 'styled-components';
 import _ from 'lodash';
 import Styles from './app/assets/scss/style.scss';
 /*eslint-enable*/
-
+import config from './app/SiteConfig';
 // Reducers
 import { mainState } from './app/components/appReducers';
 
@@ -35,9 +35,9 @@ const breakPointsTheme = {
 const appStore = createStore(combineReducers({ mainState }));
 
 if (NODE_ENV === 'production') {
-  ReactGA.initialize('UA-120444900-1');
+  ReactGA.initialize(config.gaProd);
 } else {
-  ReactGA.initialize('UA-120449052-1');
+  ReactGA.initialize(config.gaDev);
 }
 
 ReactGA.pageview(window.location.pathname + window.location.search);
