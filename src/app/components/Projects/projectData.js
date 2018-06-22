@@ -36,7 +36,7 @@ export const projectData = [
     github: 'https://github.com/k3luu/thh',
     description:
       'Redesigned the website for Two Half-Hitches, a team dedicated to guiding explorers on their outdoor journeys.',
-    tools: ['React', 'Gatsby', 'AWS S3 Buckets', 'Gestalt']
+    tools: ['React', 'Gatsby', 'AWS S3 Buckets', 'Gestalt', 'GraphQL']
   },
   {
     id: 2,
