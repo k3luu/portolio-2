@@ -111,6 +111,7 @@ class About extends React.Component {
           <li>Reading</li>
           <li>Photography</li>
           <li>Drawing</li>
+          <li>Hiking</li>
         </ul>
       </Container>
     );
