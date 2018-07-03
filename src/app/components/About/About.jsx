@@ -3,17 +3,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { withStyles } from '@material-ui/core/styles';
-import Chip from '@material-ui/core/Chip';
-import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faUserGraduate from '@fortawesome/fontawesome-free-solid/faUserGraduate';
+// import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 const Container = styled.div``;
 
-const ChipContainer = styled.div`
-  max-width: 750px;
+const Img = styled.img`
+  height: 100px;
+  width: 100px;
 `;
 
 const styles = theme => ({
@@ -30,47 +28,8 @@ const styles = theme => ({
 });
 
 class About extends React.Component {
-  state = {
-    skills: [
-      {
-        id: 0,
-        name: 'React',
-        src: 'https://laracasts.com/images/series/circles/do-you-react.png'
-      },
-      {
-        id: 1,
-        name: 'Javascript',
-        src: 'https://www.bleepstatic.com/content/hl-images/2017/03/09/JavaScript.jpg'
-      },
-      { id: 2, name: 'HTML', src: 'https://www.sololearn.com/Icons/Courses/1014.png' },
-      {
-        id: 3,
-        name: 'styled-components',
-        src: 'http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-11/256/nail-polish.png'
-      },
-      {
-        id: 4,
-        name: 'SASS',
-        src: 'https://sass-lang.com/assets/img/styleguide/seal-color-aef0354c.png'
-      },
-      {
-        id: 5,
-        name: 'Webpack',
-        src:
-          'https://cdn-images.threadless.com/threadless-media/artist_shops/shops/webpack/products/153396/shirt-1484585688-8a896a82dfa5bc337a0ea76ded65424f.png?v=3&d=eyJvbmx5X21ldGEiOiBmYWxzZSwgImZvcmNlIjogZmFsc2UsICJvcHMiOiBbWyJ0cmltIiwgW2ZhbHNlLCBmYWxzZV0sIHt9XSwgWyJyZXNpemUiLCBbXSwgeyJ3aWR0aCI6IDk5Ni4wLCAiYWxsb3dfdXAiOiBmYWxzZSwgImhlaWdodCI6IDk5Ni4wfV0sIFsiY2FudmFzX2NlbnRlcmVkIiwgWzEyMDAsIDEyMDBdLCB7ImJhY2tncm91bmQiOiAiMWM3OGMwIn1dLCBbInJlc2l6ZSIsIFs4MDBdLCB7fV0sIFsiY2FudmFzX2NlbnRlcmVkIiwgWzgwMCwgODAwLCAiI2ZmZmZmZiJdLCB7fV0sIFsiZW5jb2RlIiwgWyJqcGciLCA4NV0sIHt9XV19'
-      },
-      {
-        id: 6,
-        name: 'Github',
-        src: 'https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png'
-      },
-      { id: 7, name: 'Node', src: 'https://pbs.twimg.com/profile_images/920915771202703361/hK0j4w6x_400x400.jpg' }
-    ]
-  };
-
   render() {
     const { classes } = this.props;
-    const { skills } = this.state;
 
     return (
       <Container id="about" className="body">
@@ -82,20 +41,12 @@ class About extends React.Component {
           about to release!
         </p>
 
-        <h4 className="hp-mt50">Skills</h4>
-
-        <ChipContainer>
-          {_.map(skills, p => (
-            <Chip key={p.id} avatar={<Avatar src={p.src} />} label={p.name} className={classes.chipRoot} />
-          ))}
-        </ChipContainer>
-
         <h4 className="hp-mt50">Education</h4>
 
         <Card className={classes.eduCard}>
           <CardContent>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <FontAwesomeIcon icon={faUserGraduate} style={{ fontSize: 72, color: '#56b1bf' }} />
+              <Img src="https://upload.wikimedia.org/wikipedia/commons/1/18/UCSD_Seal.png" alt="UCSD" />
               <div className="hp-ml30">
                 <div>UC San Diego</div>
                 <div>B.S. Computer Science</div>

@@ -10,6 +10,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Collapse from '@material-ui/core/Collapse';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import Chip from '@material-ui/core/Chip';
+import Avatar from '@material-ui/core/Avatar';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faGithub from '@fortawesome/fontawesome-free-brands/faGithub';
 import { projectData } from './projectData';
@@ -42,8 +44,13 @@ const CardContainer = styled.div`
 
   ${breakpoint('sm')`
     flex-flow: column wrap;
-    height: 1200px;
+    height: 1400px;
   `};
+`;
+
+const ChipContainer = styled.div`
+  display: flex;
+  flex-flow: row wrap;
 `;
 
 const styles = theme => ({
@@ -64,6 +71,10 @@ const styles = theme => ({
     height: 100,
     boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.14)',
     paddingTop: '40%'
+  },
+  chipRoot: {
+    fontSize: 14,
+    margin: 5
   }
 });
 
@@ -133,14 +144,45 @@ class Projects extends React.Component {
    * @returns {string}  string of tools, concat w/ ', '
    */
   renderTools = list => {
-    let toolStr = '';
+    const { classes } = this.props;
+    let toolChips = [];
 
     _.map(list, obj => {
-      if (toolStr.length > 0) toolStr += ', ';
-      toolStr += obj;
+      let src;
+
+      switch (obj) {
+        case 'React':
+          src = 'https://laracasts.com/images/series/circles/do-you-react.png';
+          break;
+
+        case 'Javascript':
+          src = 'https://www.bleepstatic.com/content/hl-images/2017/03/09/JavaScript.jpg';
+          break;
+
+        case 'HTML':
+          src = 'https://www.sololearn.com/Icons/Courses/1014.png';
+          break;
+
+        case 'styled-components':
+          src = 'http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-11/256/nail-polish.png';
+          break;
+
+        case 'SASS':
+          src = 'https://sass-lang.com/assets/img/styleguide/seal-color-aef0354c.png';
+          break;
+
+        case 'Webpack':
+          src =
+            'https://cdn-images.threadless.com/threadless-media/artist_shops/shops/webpack/products/153396/shirt-1484585688-8a896a82dfa5bc337a0ea76ded65424f.png?v=3&d=eyJvbmx5X21ldGEiOiBmYWxzZSwgImZvcmNlIjogZmFsc2UsICJvcHMiOiBbWyJ0cmltIiwgW2ZhbHNlLCBmYWxzZV0sIHt9XSwgWyJyZXNpemUiLCBbXSwgeyJ3aWR0aCI6IDk5Ni4wLCAiYWxsb3dfdXAiOiBmYWxzZSwgImhlaWdodCI6IDk5Ni4wfV0sIFsiY2FudmFzX2NlbnRlcmVkIiwgWzEyMDAsIDEyMDBdLCB7ImJhY2tncm91bmQiOiAiMWM3OGMwIn1dLCBbInJlc2l6ZSIsIFs4MDBdLCB7fV0sIFsiY2FudmFzX2NlbnRlcmVkIiwgWzgwMCwgODAwLCAiI2ZmZmZmZiJdLCB7fV0sIFsiZW5jb2RlIiwgWyJqcGciLCA4NV0sIHt9XV19';
+          break;
+
+        default:
+      }
+
+      toolChips.push(<Chip key={obj} avatar={src && <Avatar src={src} />} label={obj} className={classes.chipRoot} />);
     });
 
-    return toolStr;
+    return toolChips;
   };
 
   render() {
@@ -187,7 +229,7 @@ class Projects extends React.Component {
                 <Collapse in={cardsCollapsed[p.id]} timeout="auto" unmountOnExit>
                   <CardContent>
                     <h5>Tools</h5>
-                    <div>{this.renderTools(p.tools)}</div>
+                    <ChipContainer>{this.renderTools(p.tools)}</ChipContainer>
                   </CardContent>
                 </Collapse>
               </Card>
