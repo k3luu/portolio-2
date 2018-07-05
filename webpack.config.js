@@ -214,7 +214,7 @@ module.exports = function(env) {
         },
 
         {
-          test: /\.(png|jpg)$/,
+          test: /\.(png|jpg|mp4)$/,
           exclude: /node_modules/,
           use: [
             {
@@ -222,22 +222,6 @@ module.exports = function(env) {
               options: {
                 query: {
                   name: 'app/assets/images/[name].[ext]'
-                }
-              }
-            },
-            {
-              loader: 'image-webpack-loader',
-              options: {
-                query: {
-                  mozjpeg: {
-                    progressive: true
-                  },
-                  gifsicle: {
-                    interlaced: true
-                  },
-                  optipng: {
-                    optimizationLevel: 7
-                  }
                 }
               }
             }

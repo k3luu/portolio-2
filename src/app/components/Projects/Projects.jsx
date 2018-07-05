@@ -15,6 +15,18 @@ import Avatar from '@material-ui/core/Avatar';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faGithub from '@fortawesome/fontawesome-free-brands/faGithub';
 import { projectData } from './projectData';
+import Webpack from '../../assets/images/webpack.jpg';
+import Gatsby from '../../assets/images/gatsby.png';
+import StyledComponents from '../../assets/images/styledComponents.png';
+import MaterialUI from '../../assets/images/materialUI.png';
+import Pinterest from '../../assets/images/pinterest.png';
+import Tumblr from '../../assets/images/tumblr.png';
+import Disqus from '../../assets/images/disqus.png';
+import GraphQL from '../../assets/images/graphql.png';
+import AWS from '../../assets/images/aws.png';
+import PHP from '../../assets/images/php.png';
+import Google from '../../assets/images/google.jpg';
+import CSS from '../../assets/images/css.png';
 
 /**
  * Google Analytics component to track external links
@@ -44,7 +56,7 @@ const CardContainer = styled.div`
 
   ${breakpoint('sm')`
     flex-flow: column wrap;
-    height: 1400px;
+    height: 1450px;
   `};
 `;
 
@@ -54,6 +66,9 @@ const ChipContainer = styled.div`
 `;
 
 const styles = theme => ({
+  avatar: {
+    border: '1px solid rgba(0, 0, 0, 0.14)'
+  },
   card: {
     maxWidth: '100%',
     minHeight: 460,
@@ -145,9 +160,17 @@ class Projects extends React.Component {
    */
   renderTools = list => {
     const { classes } = this.props;
-    let toolChips = [];
 
-    _.map(list, obj => {
+    list.sort((a, b) => {
+      let x, y;
+
+      x = a.toLowerCase();
+      y = b.toLowerCase();
+
+      return x > y ? 1 : x < y ? -1 : 0;
+    });
+
+    return _.map(list, obj => {
       let src;
 
       switch (obj) {
@@ -163,26 +186,70 @@ class Projects extends React.Component {
           src = 'https://www.sololearn.com/Icons/Courses/1014.png';
           break;
 
-        case 'styled-components':
-          src = 'http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-11/256/nail-polish.png';
-          break;
-
         case 'SASS':
           src = 'https://sass-lang.com/assets/img/styleguide/seal-color-aef0354c.png';
           break;
 
         case 'Webpack':
-          src =
-            'https://cdn-images.threadless.com/threadless-media/artist_shops/shops/webpack/products/153396/shirt-1484585688-8a896a82dfa5bc337a0ea76ded65424f.png?v=3&d=eyJvbmx5X21ldGEiOiBmYWxzZSwgImZvcmNlIjogZmFsc2UsICJvcHMiOiBbWyJ0cmltIiwgW2ZhbHNlLCBmYWxzZV0sIHt9XSwgWyJyZXNpemUiLCBbXSwgeyJ3aWR0aCI6IDk5Ni4wLCAiYWxsb3dfdXAiOiBmYWxzZSwgImhlaWdodCI6IDk5Ni4wfV0sIFsiY2FudmFzX2NlbnRlcmVkIiwgWzEyMDAsIDEyMDBdLCB7ImJhY2tncm91bmQiOiAiMWM3OGMwIn1dLCBbInJlc2l6ZSIsIFs4MDBdLCB7fV0sIFsiY2FudmFzX2NlbnRlcmVkIiwgWzgwMCwgODAwLCAiI2ZmZmZmZiJdLCB7fV0sIFsiZW5jb2RlIiwgWyJqcGciLCA4NV0sIHt9XV19';
+          src = Webpack;
+          break;
+
+        case 'Gatsby':
+          src = Gatsby;
+          break;
+
+        case 'styled-components':
+          src = StyledComponents;
+          break;
+
+        case 'Material UI':
+          src = MaterialUI;
+          break;
+
+        case 'Gestalt':
+          src = Pinterest;
+          break;
+
+        case 'Tumblr':
+          src = Tumblr;
+          break;
+
+        case 'Disqus':
+          src = Disqus;
+          break;
+
+        case 'GraphQL':
+          src = GraphQL;
+          break;
+
+        case 'Amazon Web Services':
+          src = AWS;
+          break;
+
+        case 'PHP':
+          src = PHP;
+          break;
+
+        case 'Google Maps API':
+          src = Google;
+          break;
+
+        case 'CSS':
+          src = CSS;
           break;
 
         default:
       }
 
-      toolChips.push(<Chip key={obj} avatar={src && <Avatar src={src} />} label={obj} className={classes.chipRoot} />);
+      return (
+        <Chip
+          key={obj}
+          avatar={src && <Avatar src={src} className={classes.avatar} />}
+          label={obj}
+          className={classes.chipRoot}
+        />
+      );
     });
-
-    return toolChips;
   };
 
   render() {
