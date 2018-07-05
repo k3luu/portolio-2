@@ -11,14 +11,9 @@ const HeaderBar = styled.div`
   height: 70px;
   width: 100%;
   position: fixed;
-  top: auto;
-  bottom: 0;
+  top: 0;
+  bottom: auto;
   z-index: 1100;
-
-  ${breakpoint('sm')`
-    top: 0;
-    bottom: auto;
-  `};
 `;
 
 const SocialContainer = styled.div`

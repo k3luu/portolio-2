@@ -15,11 +15,6 @@ import './styles/_navigation.scss';
 const Container = styled.div`
   width: 100%;
 
-  div {
-    height: 100%;
-    width: 100%;
-  }
-
   ${breakpoint('sm')`
     width: auto;
   `};
@@ -66,13 +61,7 @@ class Navigation extends React.Component {
 
     return (
       <Container>
-        <Tabs
-          value={value}
-          textColor="primary"
-          indicatorColor="primary"
-          style={{ height: '100%' }}
-          onChange={this.handleChange}
-        >
+        <Tabs value={value} textColor="primary" indicatorColor="primary" onChange={this.handleChange}>
           {_.map(options, p => (
             <MyTab key={p.id} label={p.name} icon={<FontAwesomeIcon className="nav__icon" icon={p.icon} />} />
           ))}

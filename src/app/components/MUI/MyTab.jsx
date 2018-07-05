@@ -4,6 +4,7 @@ import Tab from '@material-ui/core/Tab';
 
 const styles = theme => ({
   root: {
+    minHeight: 70,
     [theme.breakpoints.up('md')]: {
       minWidth: 140
     },
@@ -29,6 +30,6 @@ const styles = theme => ({
   }
 });
 
-let MyTab = props => <Tab style={{ height: '100%' }} {...props} disableRipple />;
+let MyTab = props => <Tab {...props} disableRipple />;
 
 export default withStyles(styles)(MyTab);

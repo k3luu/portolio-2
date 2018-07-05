@@ -5,7 +5,7 @@ import breakpoint from 'styled-components-breakpoint';
 const FooterBar = styled.div`
   background: #f6f9fd;
   box-sizing: border-box;
-  display: none;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   height: 50px;
@@ -15,7 +15,6 @@ const FooterBar = styled.div`
   bottom: 0;
 
   ${breakpoint('sm')`
-    display: flex;
     padding: 0 50px;  
   `};
 `;
