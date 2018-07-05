@@ -27,6 +27,10 @@ import AWS from '../../assets/images/aws.png';
 import PHP from '../../assets/images/php.png';
 import Google from '../../assets/images/google.jpg';
 import CSS from '../../assets/images/css.png';
+import Netlify from '../../assets/images/netlify.jpg';
+import ReactIcon from '../../assets/images/react.png';
+import ReduxIcon from '../../assets/images/redux.jpg';
+import HTML from '../../assets/images/html.jpg';
 
 /**
  * Google Analytics component to track external links
@@ -49,20 +53,20 @@ const SingleCard = styled.div`
 
 const CardContainer = styled.div`
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: column;
   align-content: center;
   height: auto;
   margin: -15px;
 
   ${breakpoint('sm')`
-    flex-flow: column wrap;
-    height: 1450px;
+    flex-flow: row wrap;
   `};
 `;
 
 const ChipContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
+  margin: 0 -5px;
 `;
 
 const styles = theme => ({
@@ -171,58 +175,60 @@ class Projects extends React.Component {
     });
 
     return _.map(list, obj => {
-      let src;
+      let src, href;
 
       switch (obj) {
         case 'React':
-          src = 'https://laracasts.com/images/series/circles/do-you-react.png';
-          break;
-
-        case 'Javascript':
-          src = 'https://www.bleepstatic.com/content/hl-images/2017/03/09/JavaScript.jpg';
+          href = 'https://reactjs.org/';
+          src = ReactIcon;
           break;
 
         case 'HTML':
-          src = 'https://www.sololearn.com/Icons/Courses/1014.png';
-          break;
-
-        case 'SASS':
-          src = 'https://sass-lang.com/assets/img/styleguide/seal-color-aef0354c.png';
+          src = HTML;
           break;
 
         case 'Webpack':
+          href = 'https://webpack.js.org/';
           src = Webpack;
           break;
 
         case 'Gatsby':
+          href = 'https://www.gatsbyjs.org/';
           src = Gatsby;
           break;
 
         case 'styled-components':
+          href = 'https://www.styled-components.com/';
           src = StyledComponents;
           break;
 
         case 'Material UI':
+          href = 'https://material-ui.com/';
           src = MaterialUI;
           break;
 
         case 'Gestalt':
+          href = 'https://pinterest.github.io/gestalt/';
           src = Pinterest;
           break;
 
         case 'Tumblr':
+          href = 'https://www.tumblr.com/about';
           src = Tumblr;
           break;
 
         case 'Disqus':
+          href = 'https://disqus.com/';
           src = Disqus;
           break;
 
         case 'GraphQL':
+          href = 'https://graphql.org/';
           src = GraphQL;
           break;
 
         case 'Amazon Web Services':
+          href = 'https://aws.amazon.com/?nc2=h_lg';
           src = AWS;
           break;
 
@@ -231,11 +237,22 @@ class Projects extends React.Component {
           break;
 
         case 'Google Maps API':
+          href = 'https://cloud.google.com/maps-platform/';
           src = Google;
           break;
 
         case 'CSS':
           src = CSS;
+          break;
+
+        case 'Netlify':
+          href = 'https://www.netlify.com/';
+          src = Netlify;
+          break;
+
+        case 'Redux':
+          href = 'https://redux.js.org/';
+          src = ReduxIcon;
           break;
 
         default:
@@ -247,6 +264,10 @@ class Projects extends React.Component {
           avatar={src && <Avatar src={src} className={classes.avatar} />}
           label={obj}
           className={classes.chipRoot}
+          clickable={!!href}
+          href={href}
+          component="a"
+          target="_blank"
         />
       );
     });

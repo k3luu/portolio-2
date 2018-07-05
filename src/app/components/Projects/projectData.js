@@ -16,7 +16,18 @@ export const projectData = [
     href: 'https://www.doctor.com/solutions/universal-scheduling',
     description:
       'An administrative dashboard for healthcare providers to manage their listings, reviews, and appointments.',
-    tools: ['React', 'Webpack', 'styled-components', 'PHP']
+    tools: ['React', 'Redux', 'Webpack', 'styled-components', 'PHP']
+  },
+  {
+    id: 0,
+    name: 'Two Half-Hitches',
+    image: thh,
+    alt_name: 'THH Header',
+    href: 'https://admiring-yalow-846eea.netlify.com',
+    github: 'https://github.com/k3luu/thh',
+    description:
+      'Redesigned the website for Two Half-Hitches, a team dedicated to guiding explorers on their outdoor journeys.',
+    tools: ['React', 'Gatsby', 'Amazon Web Services', 'Gestalt', 'GraphQL', 'Disqus', 'Netlify']
   },
   {
     id: 1,
@@ -28,17 +39,6 @@ export const projectData = [
     tools: ['HTML', 'CSS', 'Tumblr']
   },
   {
-    id: 0,
-    name: 'Two Half-Hitches',
-    image: thh,
-    alt_name: 'THH Header',
-    href: 'https://admiring-yalow-846eea.netlify.com',
-    github: 'https://github.com/k3luu/thh',
-    description:
-      'Redesigned the website for Two Half-Hitches, a team dedicated to guiding explorers on their outdoor journeys.',
-    tools: ['React', 'Gatsby', 'Amazon Web Services', 'Gestalt', 'GraphQL', 'Disqus']
-  },
-  {
     id: 2,
     name: 'Portfolio',
     image: portfolio,
@@ -46,6 +46,6 @@ export const projectData = [
     href: 'http://kathyluu.io',
     github: 'https://github.com/k3luu/kathyluu',
     description: 'My portfolio.',
-    tools: ['React', 'Webpack', 'styled-components', 'Material UI', 'Google Maps API']
+    tools: ['React', 'Webpack', 'styled-components', 'Material UI', 'Google Maps API', 'Netlify']
   }
 ];
