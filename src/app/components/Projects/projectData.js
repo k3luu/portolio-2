@@ -23,7 +23,7 @@ export const projectData = [
     name: 'Two Half-Hitches',
     image: thh,
     alt_name: 'THH Header',
-    href: 'https://admiring-yalow-846eea.netlify.com',
+    href: 'https://thh.netlify.com',
     github: 'https://github.com/k3luu/thh',
     description:
       'Redesigned the website for Two Half-Hitches, a team dedicated to guiding explorers on their outdoor journeys.',
