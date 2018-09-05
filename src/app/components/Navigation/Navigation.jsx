@@ -24,12 +24,14 @@ const Container = styled.div`
 `;
 
 const Tab = styled.div`
-  color: #56b1bf;
+  color: ${props => (props.active ? '#56b1bf' : '#6b6b6b')};
   display: flex;
   align-items: center;
   font-size: 12px;
-  padding: 20px;
+  font-weight: bold;
+  padding: 0 50px;
   text-transform: uppercase;
+  cursor: pointer;
 `;
 
 class Navigation extends React.Component {
@@ -47,10 +49,9 @@ class Navigation extends React.Component {
    * Sets the current navigation tab and moves the page to the selected
    * tab.
    *
-   * @param event
    * @param value
    */
-  handleChange = (event, value) => {
+  handleChange = value => {
     const { options } = this.state;
     let match = '/';
 
@@ -69,16 +70,13 @@ class Navigation extends React.Component {
   };
 
   render() {
-    const {
-      // value,
-      options
-    } = this.state;
+    const { value, options } = this.state;
 
     return (
       <Container>
         {/*<Tabs value={value} textColor="primary" indicatorColor="primary" onChange={this.handleChange}>*/}
         {_.map(options, p => (
-          <Tab key={p.id}>
+          <Tab active={p.id === value} key={p.id} onClick={() => this.handleChange(p.id)}>
             {p.name}
             <FontAwesomeIcon className="nav__icon" icon={p.icon} />
           </Tab>
