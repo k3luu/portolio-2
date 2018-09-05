@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faEnvelope from '@fortawesome/fontawesome-free-regular/faEnvelope';
+// import TextField from '@material-ui/core/TextField';
+// import Button from '@material-ui/core/Button';
+// import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+// import faEnvelope from '@fortawesome/fontawesome-free-regular/faEnvelope';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import config from '../../SiteConfig';
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
@@ -88,25 +88,25 @@ const Form = styled.form`
   `};
 `;
 
-const TextBox = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  margin: 0 -10px;
-
-  > div {
-    margin: 0 10px;
-  }
-`;
-
-const MessageBox = styled.div`
-  margin: 20px -10px;
-  display: flex;
-
-  > div {
-    margin: 0 10px;
-    flex-grow: 1;
-  }
-`;
+// const TextBox = styled.div`
+//   display: flex;
+//   flex-flow: row wrap;
+//   margin: 0 -10px;
+//
+//   > div {
+//     margin: 0 10px;
+//   }
+// `;
+//
+// const MessageBox = styled.div`
+//   margin: 20px -10px;
+//   display: flex;
+//
+//   > div {
+//     margin: 0 10px;
+//     flex-grow: 1;
+//   }
+// `;
 
 let validationObj = () => {
   return {
@@ -167,7 +167,10 @@ class Contact extends React.Component {
 
   render() {
     const { mainState } = this.props;
-    const { error, submitValidation } = this.state;
+    const {
+      // error,
+      // submitValidation
+    } = this.state;
 
     return (
       <Container id="contact" className="body" loading={mainState.loading}>
@@ -185,7 +188,7 @@ class Contact extends React.Component {
 
             <MailContainer>
               <a href={`mailto:${config.email}`}>
-                <FontAwesomeIcon icon={faEnvelope} style={{ fontSize: 16 }} /> {config.email}
+                {/*<FontAwesomeIcon icon={faEnvelope} style={{ fontSize: 16 }} /> {config.email}*/}
               </a>
               <CopyToClipboard text={config.email}>
                 <Note>(Copy address)</Note>
@@ -195,41 +198,41 @@ class Contact extends React.Component {
 
           <Form name="contact" method="POST" action="/success" data-netlify="true">
             <input type="hidden" name="form-name" value="contact" />
-            <TextBox>
-              <TextField
-                name="name"
-                label="Name"
-                style={{ flexGrow: 1 }}
-                error={!error['name'].valid}
-                onChange={this.handleValidation}
-                required
-              />
-              <TextField
-                type="email"
-                name="email"
-                label="Email"
-                style={{ flexGrow: 1 }}
-                error={!error['email'].valid}
-                onChange={this.handleValidation}
-                required
-              />
-            </TextBox>
-            <MessageBox>
-              <TextField
-                name="message"
-                label="Message"
-                multiline
-                rows="4"
-                fullWidth
-                error={!error['message'].valid}
-                onChange={this.handleValidation}
-                required
-              />
-            </MessageBox>
+            {/*<TextBox>*/}
+            {/*<TextField*/}
+            {/*name="name"*/}
+            {/*label="Name"*/}
+            {/*style={{ flexGrow: 1 }}*/}
+            {/*error={!error['name'].valid}*/}
+            {/*onChange={this.handleValidation}*/}
+            {/*required*/}
+            {/*/>*/}
+            {/*<TextField*/}
+            {/*type="email"*/}
+            {/*name="email"*/}
+            {/*label="Email"*/}
+            {/*style={{ flexGrow: 1 }}*/}
+            {/*error={!error['email'].valid}*/}
+            {/*onChange={this.handleValidation}*/}
+            {/*required*/}
+            {/*/>*/}
+            {/*</TextBox>*/}
+            {/*<MessageBox>*/}
+            {/*<TextField*/}
+            {/*name="message"*/}
+            {/*label="Message"*/}
+            {/*multiline*/}
+            {/*rows="4"*/}
+            {/*fullWidth*/}
+            {/*error={!error['message'].valid}*/}
+            {/*onChange={this.handleValidation}*/}
+            {/*required*/}
+            {/*/>*/}
+            {/*</MessageBox>*/}
 
-            <Button type="submit" className="hp-mt50" variant="raised" color="secondary" disabled={!submitValidation}>
-              Send
-            </Button>
+            {/*<Button type="submit" className="hp-mt50" variant="raised" color="secondary" disabled={!submitValidation}>*/}
+            {/*Send*/}
+            {/*</Button>*/}
           </Form>
         </Content>
       </Container>

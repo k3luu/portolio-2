@@ -3,21 +3,33 @@ import { withRouter } from 'react-router-dom';
 import ReactGA from 'react-ga';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faHome from '@fortawesome/fontawesome-free-solid/faHome';
-import faBriefcase from '@fortawesome/fontawesome-free-solid/faBriefcase';
-import faUser from '@fortawesome/fontawesome-free-regular/faUser';
-import faPaperPlane from '@fortawesome/fontawesome-free-regular/faPaperPlane';
-import Tabs from '@material-ui/core/Tabs';
-import MyTab from '../MUI/MyTab';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faPaperPlane } from '@fortawesome/free-regular-svg-icons';
+import { faBriefcase, faHome } from '@fortawesome/free-solid-svg-icons';
+// import faHome from '@fortawesome/fontawesome-free-solid/faHome';
+// import faBriefcase from '@fortawesome/fontawesome-free-solid/faBriefcase';
+// import faUser from '@fortawesome/fontawesome-free-regular/faUser';
+// import faPaperPlane from '@fortawesome/fontawesome-free-regular/faPaperPlane';
+// import Tabs from '@material-ui/core/Tabs';
+// import MyTab from '../MUI/MyTab';
 import './styles/_navigation.scss';
 
 const Container = styled.div`
+  display: flex;
   width: 100%;
 
   ${breakpoint('sm')`
     width: auto;
   `};
+`;
+
+const Tab = styled.div`
+  color: #56b1bf;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  padding: 20px;
+  text-transform: uppercase;
 `;
 
 class Navigation extends React.Component {
@@ -57,15 +69,21 @@ class Navigation extends React.Component {
   };
 
   render() {
-    const { value, options } = this.state;
+    const {
+      // value,
+      options
+    } = this.state;
 
     return (
       <Container>
-        <Tabs value={value} textColor="primary" indicatorColor="primary" onChange={this.handleChange}>
-          {_.map(options, p => (
-            <MyTab key={p.id} label={p.name} icon={<FontAwesomeIcon className="nav__icon" icon={p.icon} />} />
-          ))}
-        </Tabs>
+        {/*<Tabs value={value} textColor="primary" indicatorColor="primary" onChange={this.handleChange}>*/}
+        {_.map(options, p => (
+          <Tab key={p.id}>
+            {p.name}
+            <FontAwesomeIcon className="nav__icon" icon={p.icon} />
+          </Tab>
+        ))}
+        {/*</Tabs>*/}
       </Container>
     );
   }

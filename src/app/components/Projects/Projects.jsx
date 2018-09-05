@@ -1,20 +1,21 @@
 import React from 'react';
 import ReactGA from 'react-ga';
 import styled from 'styled-components';
-import breakpoint from 'styled-components-breakpoint';
+// import breakpoint from 'styled-components-breakpoint';
 import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Collapse from '@material-ui/core/Collapse';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
+// import Card from '@material-ui/core/Card';
+// import CardMedia from '@material-ui/core/CardMedia';
+// import CardActions from '@material-ui/core/CardActions';
+// import CardContent from '@material-ui/core/CardContent';
+// import Collapse from '@material-ui/core/Collapse';
+// import Button from '@material-ui/core/Button';
+// import IconButton from '@material-ui/core/IconButton';
 import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faGithub from '@fortawesome/fontawesome-free-brands/faGithub';
-import { projectData } from './projectData';
+// import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+// import faGithub from '@fortawesome/fontawesome-free-brands/faGithub';
+
+// import { projectData } from './projectData';
 import Webpack from '../../assets/images/webpack.jpg';
 import Gatsby from '../../assets/images/gatsby.png';
 import StyledComponents from '../../assets/images/styledComponents.png';
@@ -37,37 +38,37 @@ import HTML from '../../assets/images/html.jpg';
  * @param props
  * @returns {*}
  */
-const MyLink = props => (
-  <ReactGA.OutboundLink eventLabel={props.name} {...props} target="_blank" rel="noopener noreferrer" />
-);
+// const MyLink = props => (
+//   <ReactGA.OutboundLink eventLabel={props.name} {...props} target="_blank" rel="noopener noreferrer" />
+// );
 
 const Container = styled.div``;
 
-const SingleCard = styled.div`
-  width: 100%;
-
-  ${breakpoint('sm')`
-    width: 50%  
-  `};
-`;
-
-const CardContainer = styled.div`
-  display: flex;
-  flex-flow: column;
-  align-content: center;
-  height: auto;
-  margin: -15px;
-
-  ${breakpoint('sm')`
-    flex-flow: row wrap;
-  `};
-`;
-
-const ChipContainer = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  margin: 0 -5px;
-`;
+// const SingleCard = styled.div`
+//   width: 100%;
+//
+//   ${breakpoint('sm')`
+//     width: 50%
+//   `};
+// `;
+//
+// const CardContainer = styled.div`
+//   display: flex;
+//   flex-flow: column;
+//   align-content: center;
+//   height: auto;
+//   margin: -15px;
+//
+//   ${breakpoint('sm')`
+//     flex-flow: row wrap;
+//   `};
+// `;
+//
+// const ChipContainer = styled.div`
+//   display: flex;
+//   flex-flow: row wrap;
+//   margin: 0 -5px;
+// `;
 
 const styles = theme => ({
   avatar: {
@@ -274,56 +275,56 @@ class Projects extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
-    const { cardsCollapsed } = this.state;
+    // const { classes } = this.props;
+    // const { cardsCollapsed } = this.state;
 
     return (
       <Container id="projects" className="body">
         <h2>Projects</h2>
 
-        <CardContainer>
-          {projectData.map(p => (
-            <SingleCard key={p.id}>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.media}
-                  image={p.image}
-                  title={p.alt_name}
-                  onClick={() => this.trackImageClick(p)}
-                />
+        {/*<CardContainer>*/}
+        {/*{projectData.map(p => (*/}
+        {/*<SingleCard key={p.id}>*/}
+        {/*<Card className={classes.card}>*/}
+        {/*<CardMedia*/}
+        {/*className={classes.media}*/}
+        {/*image={p.image}*/}
+        {/*title={p.alt_name}*/}
+        {/*onClick={() => this.trackImageClick(p)}*/}
+        {/*/>*/}
 
-                <CardContent>
-                  <h4>{p.name}</h4>
-                  {p.description}
-                </CardContent>
+        {/*<CardContent>*/}
+        {/*<h4>{p.name}</h4>*/}
+        {/*{p.description}*/}
+        {/*</CardContent>*/}
 
-                <CardActions className={classes.cardAction}>
-                  <div>
-                    <Button size="small" color="primary" onClick={() => this.trackExpandClick(p)}>
-                      {cardsCollapsed[p.id] ? 'Collapse' : 'Expand'}
-                    </Button>
-                    <Button size="small" component={MyLink} name={'Project - ' + p.name} to={p.href} color="primary">
-                      Visit
-                    </Button>
-                  </div>
+        {/*<CardActions className={classes.cardAction}>*/}
+        {/*<div>*/}
+        {/*<Button size="small" color="primary" onClick={() => this.trackExpandClick(p)}>*/}
+        {/*{cardsCollapsed[p.id] ? 'Collapse' : 'Expand'}*/}
+        {/*</Button>*/}
+        {/*<Button size="small" component={MyLink} name={'Project - ' + p.name} to={p.href} color="primary">*/}
+        {/*Visit*/}
+        {/*</Button>*/}
+        {/*</div>*/}
 
-                  {p.github && (
-                    <IconButton component={MyLink} name={'Repo - ' + p.github} to={p.github}>
-                      <FontAwesomeIcon icon={faGithub} />
-                    </IconButton>
-                  )}
-                </CardActions>
+        {/*{p.github && (*/}
+        {/*<IconButton component={MyLink} name={'Repo - ' + p.github} to={p.github}>*/}
+        {/*<FontAwesomeIcon icon={faGithub} />*/}
+        {/*</IconButton>*/}
+        {/*)}*/}
+        {/*</CardActions>*/}
 
-                <Collapse in={cardsCollapsed[p.id]} timeout="auto" unmountOnExit>
-                  <CardContent>
-                    <h5>Tools</h5>
-                    <ChipContainer>{this.renderTools(p.tools)}</ChipContainer>
-                  </CardContent>
-                </Collapse>
-              </Card>
-            </SingleCard>
-          ))}
-        </CardContainer>
+        {/*<Collapse in={cardsCollapsed[p.id]} timeout="auto" unmountOnExit>*/}
+        {/*<CardContent>*/}
+        {/*<h5>Tools</h5>*/}
+        {/*<ChipContainer>{this.renderTools(p.tools)}</ChipContainer>*/}
+        {/*</CardContent>*/}
+        {/*</Collapse>*/}
+        {/*</Card>*/}
+        {/*</SingleCard>*/}
+        {/*))}*/}
+        {/*</CardContainer>*/}
       </Container>
     );
   }
