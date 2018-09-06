@@ -16,22 +16,6 @@ import Avatar from '@material-ui/core/Avatar';
 // import faGithub from '@fortawesome/fontawesome-free-brands/faGithub';
 
 // import { projectData } from './projectData';
-import Webpack from '../../assets/images/webpack.jpg';
-import Gatsby from '../../assets/images/gatsby.png';
-import StyledComponents from '../../assets/images/styledComponents.png';
-import MaterialUI from '../../assets/images/materialUI.png';
-import Pinterest from '../../assets/images/pinterest.png';
-import Tumblr from '../../assets/images/tumblr.png';
-import Disqus from '../../assets/images/disqus.png';
-import GraphQL from '../../assets/images/graphql.png';
-import AWS from '../../assets/images/aws.png';
-import PHP from '../../assets/images/php.png';
-import Google from '../../assets/images/google.jpg';
-import CSS from '../../assets/images/css.png';
-import Netlify from '../../assets/images/netlify.jpg';
-import ReactIcon from '../../assets/images/react.png';
-import ReduxIcon from '../../assets/images/redux.jpg';
-import HTML from '../../assets/images/html.jpg';
 
 /**
  * Google Analytics component to track external links
@@ -181,79 +165,79 @@ class Projects extends React.Component {
       switch (obj) {
         case 'React':
           href = 'https://reactjs.org/';
-          src = ReactIcon;
+          src = 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/react.png';
           break;
 
         case 'HTML':
-          src = HTML;
+          src = 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/html.jpg';
           break;
 
         case 'Webpack':
           href = 'https://webpack.js.org/';
-          src = Webpack;
+          src = 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/webpack.jpg';
           break;
 
         case 'Gatsby':
           href = 'https://www.gatsbyjs.org/';
-          src = Gatsby;
+          src = 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/gatsby.png';
           break;
 
         case 'styled-components':
           href = 'https://www.styled-components.com/';
-          src = StyledComponents;
+          src = 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/styledComponents.png';
           break;
 
         case 'Material UI':
           href = 'https://material-ui.com/';
-          src = MaterialUI;
+          src = 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/materialUI.png';
           break;
 
         case 'Gestalt':
           href = 'https://pinterest.github.io/gestalt/';
-          src = Pinterest;
+          src = 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/pinterest.png';
           break;
 
         case 'Tumblr':
           href = 'https://www.tumblr.com/about';
-          src = Tumblr;
+          src = 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/tumblr.png';
           break;
 
         case 'Disqus':
           href = 'https://disqus.com/';
-          src = Disqus;
+          src = 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/disqus.png';
           break;
 
         case 'GraphQL':
           href = 'https://graphql.org/';
-          src = GraphQL;
+          src = 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/graphql.png';
           break;
 
         case 'Amazon Web Services':
           href = 'https://aws.amazon.com/?nc2=h_lg';
-          src = AWS;
+          src = 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/aws.png';
           break;
 
         case 'PHP':
-          src = PHP;
+          src = 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/php.png';
           break;
 
         case 'Google Maps API':
           href = 'https://cloud.google.com/maps-platform/';
-          src = Google;
+          src = 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/google.jpg';
           break;
 
         case 'CSS':
-          src = CSS;
+          src = 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/css.png';
           break;
 
         case 'Netlify':
           href = 'https://www.netlify.com/';
-          src = Netlify;
+          src = 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/netlify.jpg';
           break;
 
         case 'Redux':
           href = 'https://redux.js.org/';
-          src = ReduxIcon;
+          src = 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/redux.jpg';
           break;
 
         default:

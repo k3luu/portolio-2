@@ -14,7 +14,7 @@ const Container = styled.div`
 `;
 
 const IconButton = styled.div`
-  padding: 15px;
+  padding: 10px;
   font-size: 20px;
   color: #032b2f;
 `;

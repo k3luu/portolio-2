@@ -6,11 +6,6 @@ import breakpoint from 'styled-components-breakpoint';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPaperPlane } from '@fortawesome/free-regular-svg-icons';
 import { faBriefcase, faHome } from '@fortawesome/free-solid-svg-icons';
-// import faHome from '@fortawesome/fontawesome-free-solid/faHome';
-// import faBriefcase from '@fortawesome/fontawesome-free-solid/faBriefcase';
-// import faUser from '@fortawesome/fontawesome-free-regular/faUser';
-// import faPaperPlane from '@fortawesome/fontawesome-free-regular/faPaperPlane';
-// import Tabs from '@material-ui/core/Tabs';
 // import MyTab from '../MUI/MyTab';
 import './styles/_navigation.scss';
 
@@ -27,11 +22,27 @@ const Tab = styled.div`
   color: ${props => (props.active ? '#56b1bf' : '#6b6b6b')};
   display: flex;
   align-items: center;
-  font-size: 12px;
+  font-size: 18px;
   font-weight: bold;
-  padding: 0 50px;
   text-transform: uppercase;
   cursor: pointer;
+  flex-grow: 1;
+  justify-content: center;
+
+  ${breakpoint('sm')`
+    flex-grow: unset;
+    font-size: 12px;
+    padding: 0 40px;
+  `};
+`;
+
+const Option = styled.div`
+  display: none;
+
+  ${breakpoint('sm')`
+    display: block;
+    flex-grow: 1;
+  `};
 `;
 
 class Navigation extends React.Component {
@@ -74,14 +85,12 @@ class Navigation extends React.Component {
 
     return (
       <Container>
-        {/*<Tabs value={value} textColor="primary" indicatorColor="primary" onChange={this.handleChange}>*/}
         {_.map(options, p => (
           <Tab active={p.id === value} key={p.id} onClick={() => this.handleChange(p.id)}>
-            {p.name}
+            <Option>{p.name}</Option>
             <FontAwesomeIcon className="nav__icon" icon={p.icon} />
           </Tab>
         ))}
-        {/*</Tabs>*/}
       </Container>
     );
   }

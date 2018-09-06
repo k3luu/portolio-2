@@ -238,8 +238,8 @@ module.exports = function(env) {
       extensions: ['.webpack-loader.js', '.web-loader.js', '.loader.js', '.js', '.jsx'],
       modules: [path.resolve(__dirname, 'node_modules'), sourcePath],
       alias: {
-        "react": "preact-compat",
-        "react-dom": "preact-compat"
+        'react': 'preact-compat',
+        'react-dom': 'preact-compat'
       }
     },
 

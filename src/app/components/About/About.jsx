@@ -8,9 +8,6 @@ import { Carousel } from 'react-responsive-carousel';
 /*eslint-disable*/
 import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
 /*eslint-enable*/
-import Photography from '../../assets/images/photography.jpg';
-import Reading from '../../assets/images/reading.jpg';
-import Hiking from '../../assets/images/hiking.jpg';
 
 const Container = styled.div``;
 
@@ -64,9 +61,9 @@ class About extends React.Component {
 
         <h4 className="hp-mt50">Interests</h4>
         <Carousel centerMode emulateTouch showThumbs={false} showStatus={false} autoPlay interval={3000} infiniteLoop>
-          <img src={Photography} />
-          <img src={Reading} />
-          <img src={Hiking} />
+          <img src="https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/photography.jpg" />
+          <img src="https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/reading.jpg" />
+          <img src="https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/hiking.jpg" />
         </Carousel>
       </Container>
     );
