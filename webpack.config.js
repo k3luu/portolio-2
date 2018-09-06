@@ -82,10 +82,10 @@ module.exports = function(env) {
         output: {
           path: 'build'
         },
-        meta: {
+        meta: [{
           name: 'Description',
           content: 'Kathy Luu - Frontend Engineer at Doctor.com'
-        }
+        }]
       }),
       new webpack.BannerPlugin({
         banner:
