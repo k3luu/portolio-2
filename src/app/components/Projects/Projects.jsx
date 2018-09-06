@@ -2,15 +2,8 @@ import React from 'react';
 import ReactGA from 'react-ga';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-// import Card from '@material-ui/core/Card';
-// import CardMedia from '@material-ui/core/CardMedia';
-// import CardActions from '@material-ui/core/CardActions';
-// import CardContent from '@material-ui/core/CardContent';
 import Collapse from '@material-ui/core/Collapse';
-// import Button from '@material-ui/core/Button';
-// import IconButton from '@material-ui/core/IconButton';
 import Chip from '@material-ui/core/Chip';
-// import Avatar from '@material-ui/core/Avatar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
@@ -247,7 +240,6 @@ class Projects extends React.Component {
       return (
         <Chip
           key={obj}
-          // avatar={src && <Avatar src={src} className={classes.avatar} />}
           label={obj}
           clickable={!!href}
           href={href}
@@ -306,68 +298,6 @@ class Projects extends React.Component {
             </Card>
           </SingleCard>
         ))}
-
-        {/*<CardContainer>*/}
-        {/*{projectData.map(p => (*/}
-        {/*<SingleCard key={p.id}>*/}
-        {/*<Card className={classes.card}>*/}
-        {/*<CardMedia*/}
-        {/*className={classes.media}*/}
-        {/*image={p.image}*/}
-        {/*title={p.alt_name}*/}
-        {/*onClick={() => this.trackImageClick(p)}*/}
-        {/*/>*/}
-
-        {/*<CardContent>*/}
-        {/*<h4>{p.name}</h4>*/}
-        {/*{p.description}*/}
-        {/*</CardContent>*/}
-
-        {/*<CardActions className={classes.cardAction}>*/}
-        {/*<div>*/}
-        {/*<Button*/}
-        {/*size="small"*/}
-        {/*color="primary"*/}
-        {/*onClick={() => this.trackExpandClick(p)}*/}
-        {/*>*/}
-        {/*{cardsCollapsed[p.id] ? 'Collapse' : 'Expand'}*/}
-        {/*</Button>*/}
-        {/*<Button*/}
-        {/*size="small"*/}
-        {/*component={MyLink}*/}
-        {/*name={'Project - ' + p.name}*/}
-        {/*to={p.href}*/}
-        {/*color="primary"*/}
-        {/*>*/}
-        {/*Visit*/}
-        {/*</Button>*/}
-        {/*</div>*/}
-
-        {/*{p.github && (*/}
-        {/*<IconButton*/}
-        {/*component={MyLink}*/}
-        {/*name={'Repo - ' + p.github}*/}
-        {/*to={p.github}*/}
-        {/*>*/}
-        {/*<FontAwesomeIcon icon={faGithub} />*/}
-        {/*</IconButton>*/}
-        {/*)}*/}
-        {/*</CardActions>*/}
-
-        {/*<Collapse*/}
-        {/*in={cardsCollapsed[p.id]}*/}
-        {/*timeout="auto"*/}
-        {/*unmountOnExit*/}
-        {/*>*/}
-        {/*<CardContent>*/}
-        {/*<h5>Tools</h5>*/}
-        {/*<ChipContainer>{this.renderTools(p.tools)}</ChipContainer>*/}
-        {/*</CardContent>*/}
-        {/*</Collapse>*/}
-        {/*</Card>*/}
-        {/*</SingleCard>*/}
-        {/*))}*/}
-        {/*</CardContainer>*/}
       </Container>
     );
   }
