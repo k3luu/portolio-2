@@ -38,9 +38,10 @@ class About extends React.Component {
         <h2>About Me</h2>
 
         <p>
-          Currently working as a frontend engineer at Doctor.com, contributing to a complete rewrite of our admin portal
-          using React. It's been a whirlwind of learning and I'm honored to be a part of such an enormous project. We're
-          about to release!
+          Currently working as a frontend engineer at Doctor.com, contributing
+          to a complete rewrite of our admin portal using React. It's been a
+          whirlwind of learning and I'm honored to be a part of such an enormous
+          project. We just release the beta version!
         </p>
 
         <h4 className="hp-mt50">Education</h4>
@@ -48,7 +49,10 @@ class About extends React.Component {
         <Card className={classes.eduCard}>
           <CardContent>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <Img src="https://upload.wikimedia.org/wikipedia/commons/1/18/UCSD_Seal.png" alt="UCSD" />
+              <Img
+                src="https://upload.wikimedia.org/wikipedia/commons/1/18/UCSD_Seal.png"
+                alt="UCSD"
+              />
               <div className="hp-ml30">
                 <div>UC San Diego</div>
                 <div>B.S. Computer Science</div>
@@ -60,7 +64,15 @@ class About extends React.Component {
         </Card>
 
         <h4 className="hp-mt50">Interests</h4>
-        <Carousel centerMode emulateTouch showThumbs={false} showStatus={false} autoPlay interval={3000} infiniteLoop>
+        <Carousel
+          centerMode
+          emulateTouch
+          showThumbs={false}
+          showStatus={false}
+          autoPlay
+          interval={3000}
+          infiniteLoop
+        >
           <img src="https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/photography.jpg" />
           <img src="https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/reading.jpg" />
           <img src="https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/hiking.jpg" />

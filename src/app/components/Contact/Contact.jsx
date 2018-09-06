@@ -2,10 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-// import TextField from '@material-ui/core/TextField';
-// import Button from '@material-ui/core/Button';
-// import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-// import faEnvelope from '@fortawesome/fontawesome-free-regular/faEnvelope';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import config from '../../SiteConfig';
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
@@ -52,7 +50,7 @@ const Note = styled.div`
   font-size: 10px;
   font-weight: bold;
   text-transform: uppercase;
-  margin-left: 20px;
+  margin-left: 25px;
 `;
 
 const MailContainer = styled.div`
@@ -80,7 +78,7 @@ const Form = styled.form`
 
   ${breakpoint('sm')`
       width: 500px;
-      padding-left: 50px;  
+      padding-left: 40px;  
   `};
 
   ${breakpoint('md')`
@@ -88,25 +86,54 @@ const Form = styled.form`
   `};
 `;
 
-// const TextBox = styled.div`
-//   display: flex;
-//   flex-flow: row wrap;
-//   margin: 0 -10px;
-//
-//   > div {
-//     margin: 0 10px;
-//   }
-// `;
-//
-// const MessageBox = styled.div`
-//   margin: 20px -10px;
-//   display: flex;
-//
-//   > div {
-//     margin: 0 10px;
-//     flex-grow: 1;
-//   }
-// `;
+const TextSection = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 -10px;
+`;
+
+const TextBox = styled.div`
+  flex-grow: 1;
+  margin: 10px;
+`;
+
+const TextField = styled.input`
+  border: 0;
+  border-bottom: ${props =>
+    props.error ? '1px solid red' : '1px solid #08708a'};
+  font-size: 14px;
+  box-sizing: border-box;
+  padding: 10px 1px;
+  width: 100%;
+  transition: 0.2s ease;
+
+  &:focus {
+    border-bottom: 1px solid #032b2f;
+    outline: 0;
+  }
+`;
+
+const MessageBox = styled.div`
+  margin: 20px -10px;
+  display: flex;
+
+  > div {
+    margin: 0 10px;
+    flex-grow: 1;
+  }
+`;
+
+const Button = styled.button`
+  color: ${props => (props.disabled ? 'rgba(0, 0, 0, 0.26)' : '#fff')};
+  background: ${props => (props.disabled ? 'rgba(0, 0, 0, 0.12)' : '#032b2f')};
+  border: 0;
+  border-radius: 3px;
+  margin-top: 50px;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 0.2s ease;
+`;
 
 let validationObj = () => {
   return {
@@ -157,20 +184,18 @@ class Contact extends React.Component {
 
     validationObj[name].dirty = true;
 
-    if (name === 'email') {
-      validationObj[name].valid = validateEmail.test(value);
-    } else if (value === '') validationObj[name].valid = false;
-    else validationObj[name].valid = true;
+    if (name === 'email') validationObj[name].valid = validateEmail.test(value);
+    else validationObj[name].valid = value !== '';
 
-    this.setState({ error: validationObj, submitValidation: this.checkValidation(validationObj) });
+    this.setState({
+      error: validationObj,
+      submitValidation: this.checkValidation(validationObj)
+    });
   };
 
   render() {
     const { mainState } = this.props;
-    const {
-      // error,
-      // submitValidation
-    } = this.state;
+    const { error, submitValidation } = this.state;
 
     return (
       <Container id="contact" className="body" loading={mainState.loading}>
@@ -188,7 +213,11 @@ class Contact extends React.Component {
 
             <MailContainer>
               <a href={`mailto:${config.email}`}>
-                {/*<FontAwesomeIcon icon={faEnvelope} style={{ fontSize: 16 }} /> {config.email}*/}
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  style={{ fontSize: 16, marginRight: 5 }}
+                />{' '}
+                {config.email}
               </a>
               <CopyToClipboard text={config.email}>
                 <Note>(Copy address)</Note>
@@ -196,43 +225,48 @@ class Contact extends React.Component {
             </MailContainer>
           </Info>
 
-          <Form name="contact" method="POST" action="/success" data-netlify="true">
+          <Form
+            name="contact"
+            method="POST"
+            action="/success"
+            data-netlify="true"
+          >
             <input type="hidden" name="form-name" value="contact" />
-            {/*<TextBox>*/}
-            {/*<TextField*/}
-            {/*name="name"*/}
-            {/*label="Name"*/}
-            {/*style={{ flexGrow: 1 }}*/}
-            {/*error={!error['name'].valid}*/}
-            {/*onChange={this.handleValidation}*/}
-            {/*required*/}
-            {/*/>*/}
-            {/*<TextField*/}
-            {/*type="email"*/}
-            {/*name="email"*/}
-            {/*label="Email"*/}
-            {/*style={{ flexGrow: 1 }}*/}
-            {/*error={!error['email'].valid}*/}
-            {/*onChange={this.handleValidation}*/}
-            {/*required*/}
-            {/*/>*/}
-            {/*</TextBox>*/}
-            {/*<MessageBox>*/}
-            {/*<TextField*/}
-            {/*name="message"*/}
-            {/*label="Message"*/}
-            {/*multiline*/}
-            {/*rows="4"*/}
-            {/*fullWidth*/}
-            {/*error={!error['message'].valid}*/}
-            {/*onChange={this.handleValidation}*/}
-            {/*required*/}
-            {/*/>*/}
-            {/*</MessageBox>*/}
+            <TextSection>
+              <TextBox>
+                <div>Name</div>
+                <TextField
+                  name="name"
+                  type="text"
+                  onChange={this.handleValidation}
+                  error={!error['name'].valid}
+                />
+              </TextBox>
+              <TextBox>
+                <div>Email</div>
+                <TextField
+                  name="email"
+                  type="email"
+                  onChange={this.handleValidation}
+                  error={!error['email'].valid}
+                />
+              </TextBox>
+            </TextSection>
+            <MessageBox>
+              <TextBox>
+                <div>Message</div>
+                <TextField
+                  name="message"
+                  label="Message"
+                  error={!error['message'].valid}
+                  onChange={this.handleValidation}
+                />
+              </TextBox>
+            </MessageBox>
 
-            {/*<Button type="submit" className="hp-mt50" variant="raised" color="secondary" disabled={!submitValidation}>*/}
-            {/*Send*/}
-            {/*</Button>*/}
+            <Button type="submit" disabled={!submitValidation}>
+              Send
+            </Button>
           </Form>
         </Content>
       </Container>
