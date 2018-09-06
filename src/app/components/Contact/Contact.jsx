@@ -100,7 +100,7 @@ const TextBox = styled.div`
 const TextField = styled.input`
   border: 0;
   border-bottom: ${props =>
-    props.error ? '1px solid red' : '1px solid #08708a'};
+    props.error ? '2px solid red' : '1px solid #08708a'};
   font-size: 14px;
   box-sizing: border-box;
   padding: 10px 1px;
@@ -108,7 +108,7 @@ const TextField = styled.input`
   transition: 0.2s ease;
 
   &:focus {
-    border-bottom: 1px solid #032b2f;
+    border-bottom: 2px solid #032b2f;
     outline: 0;
   }
 `;

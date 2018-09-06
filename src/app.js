@@ -6,10 +6,9 @@ import 'whatwg-fetch';
 import 'babel-polyfill';
 import ReactGA from 'react-ga';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { MuiThemeProvider } from '@material-ui/core/styles';
 import { ThemeProvider } from 'styled-components';
 /*eslint-disable*/
-import _ from 'lodash';
+// import _ from 'lodash';
 import Styles from './app/assets/scss/style.scss';
 /*eslint-enable*/
 import config from './app/SiteConfig';
@@ -19,7 +18,6 @@ import { mainState } from './app/components/appReducers';
 // Components
 import AppIndex from './app/components/appIndex';
 import Success from './app/components/Success/Success';
-import { MyTheme } from './app/components/MUI/MyTheme';
 
 const breakPointsTheme = {
   breakpoints: {
@@ -44,7 +42,6 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 
 ReactDOM.render(
   <ThemeProvider theme={breakPointsTheme}>
-    <MuiThemeProvider theme={MyTheme}>
       <Provider store={appStore}>
         <BrowserRouter>
           <Switch>
@@ -53,7 +50,6 @@ ReactDOM.render(
           </Switch>
         </BrowserRouter>
       </Provider>
-    </MuiThemeProvider>
   </ThemeProvider>,
   document.getElementById('app')
 );

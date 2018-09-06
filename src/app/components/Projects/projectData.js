@@ -1,8 +1,3 @@
-import thh from './images/thh.png';
-import luusfilm from './images/luusfilm.png';
-import portfolio from './images/portfolio.png';
-import rpadm from './images/rpadm.png';
-
 /**
  * *Descriptions need to be short so that all the cards' heights are aligned.
  * @type {*[]}
@@ -11,7 +6,7 @@ export const projectData = [
   {
     id: 3,
     name: 'Doctor.com Provider Admin',
-    image: rpadm,
+    image: 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/projects/rpadm.png',
     alt_name: 'DDC RPADM Header',
     href: 'https://www.doctor.com/solutions/universal-scheduling',
     description:
@@ -21,7 +16,7 @@ export const projectData = [
   {
     id: 0,
     name: 'Two Half-Hitches',
-    image: thh,
+    image: 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/projects/thh.png',
     alt_name: 'THH Header',
     href: 'https://thh.netlify.com',
     github: 'https://github.com/k3luu/thh',
@@ -32,7 +27,7 @@ export const projectData = [
   {
     id: 1,
     name: 'Luusfilm',
-    image: luusfilm,
+    image: 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/projects/luusfilm.png',
     alt_name: 'Luusfilm Header',
     href: 'https://luusfilm.tumblr.com',
     description: 'My personal photography blog hosted on Tumblr. Uses a custom theme made my yours truly.',
@@ -41,11 +36,11 @@ export const projectData = [
   {
     id: 2,
     name: 'Portfolio',
-    image: portfolio,
+    image: 'https://s3-us-west-1.amazonaws.com/kaluu/portfolio/projects/portfolio.png',
     alt_name: 'Portfolio Header',
     href: 'http://kathyluu.io',
     github: 'https://github.com/k3luu/kathyluu',
     description: 'My portfolio.',
-    tools: ['React', 'Webpack', 'styled-components', 'Material UI', 'Google Maps API', 'Netlify']
+    tools: ['React', 'Webpack', 'styled-components', 'Google Maps API', 'Netlify']
   }
 ];

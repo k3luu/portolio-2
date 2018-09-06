@@ -6,8 +6,6 @@ import breakpoint from 'styled-components-breakpoint';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPaperPlane } from '@fortawesome/free-regular-svg-icons';
 import { faBriefcase, faHome } from '@fortawesome/free-solid-svg-icons';
-// import MyTab from '../MUI/MyTab';
-import './styles/_navigation.scss';
 
 const Container = styled.div`
   display: flex;
@@ -45,6 +43,14 @@ const Option = styled.div`
   `};
 `;
 
+const IconContainer = styled.div`
+  display: block;
+
+  ${breakpoint('sm')`
+    display: none;
+  `};
+`;
+
 class Navigation extends React.Component {
   state = {
     value: 0,
@@ -66,11 +72,13 @@ class Navigation extends React.Component {
     const { options } = this.state;
     let match = '/';
 
-    _.map(options, p => {
+    options.map(p => {
       if (p.id === value) match = p.to;
     });
 
-    document.getElementById(match).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document
+      .getElementById(match)
+      .scrollIntoView({ behavior: 'smooth', block: 'start' });
     ReactGA.event({
       category: 'Navigation',
       action: 'Clicked on a tab',
@@ -85,10 +93,16 @@ class Navigation extends React.Component {
 
     return (
       <Container>
-        {_.map(options, p => (
-          <Tab active={p.id === value} key={p.id} onClick={() => this.handleChange(p.id)}>
+        {options.map(p => (
+          <Tab
+            active={p.id === value}
+            key={p.id}
+            onClick={() => this.handleChange(p.id)}
+          >
             <Option>{p.name}</Option>
-            <FontAwesomeIcon className="nav__icon" icon={p.icon} />
+            <IconContainer>
+              <FontAwesomeIcon className="nav__icon" icon={p.icon} />
+            </IconContainer>
           </Tab>
         ))}
       </Container>
