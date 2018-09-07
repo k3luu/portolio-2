@@ -28,7 +28,7 @@ class AppIndex extends React.Component {
    * Lets the other components (namely Google Maps) load first
    */
   componentDidMount() {
-    setTimeout(() => this.props.stateOnChange(APP_ON_LOAD), 2000);
+    setTimeout(() => this.props.stateOnChange(APP_ON_LOAD), 100);
   }
 
   /**
@@ -45,15 +45,15 @@ class AppIndex extends React.Component {
       // case 'loader':
       //   return mainState.loading && <MainLoader />;
       case 'header':
-        return !mainState.loading && <Header />;
+        return <Header />;
       case 'home':
-        return !mainState.loading && <Home />;
+        return <Home loading={mainState.loading} />;
       case 'projectData':
         return !mainState.loading && <Projects />;
       case 'about':
         return !mainState.loading && <About />;
       case 'contact':
-        return <Contact />;
+        return !mainState.loading && <Contact />;
       case 'footer':
         return !mainState.loading && <Footer />;
     }

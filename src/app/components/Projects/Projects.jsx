@@ -2,8 +2,6 @@ import React from 'react';
 import ReactGA from 'react-ga';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-import Collapse from '@material-ui/core/Collapse';
-import Chip from '@material-ui/core/Chip';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
@@ -30,7 +28,7 @@ const SingleCard = styled.div`
   margin: 50px 0;
 
   ${breakpoint('sm')`
-    width: 50%
+    width: 50%;
   `};
 `;
 
@@ -50,14 +48,29 @@ const CardMedia = styled.img`
   width: 100%;
 `;
 
-const CardContent = styled.div``;
-
 const CardActions = styled.div``;
 
 const ChipContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
-  margin: 0 -5px;
+`;
+
+const Chip = styled.div`
+  color: rgba(0, 0, 0, 0.87);
+  border: none;
+  height: 32px;
+  cursor: default;
+  padding: 0 10px;
+  margin: 5px;
+  display: inline-flex;
+  outline: 0;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  align-items: center;
+  border-radius: 16px;
+  text-decoration: none;
+  justify-content: center;
+  background-color: #e0e0e0;
 `;
 
 const Button = styled.button`
@@ -71,67 +84,10 @@ const Button = styled.button`
   font-weight: bold;
   text-transform: uppercase;
   transition: 0.2s ease;
+  cursor: pointer;
 `;
 
 class Projects extends React.Component {
-  state = { cardsCollapsed: {} };
-
-  /**
-   * Expands/collapses a project using its ID
-   * @param project
-   */
-  handleCardCollapse = project => {
-    const { cardsCollapsed } = this.state;
-
-    cardsCollapsed[project.id] = !cardsCollapsed[project.id];
-
-    if (cardsCollapsed[project.id]) {
-      ReactGA.event({
-        category: 'Projects',
-        action: 'Expanded a project',
-        label: project.name
-      });
-    }
-
-    this.setState({ cardsCollapsed });
-  };
-
-  /**
-   * Triggers project expansion via clicking on project image
-   * @param project
-   */
-  trackImageClick = project => {
-    const { cardsCollapsed } = this.state;
-
-    if (!cardsCollapsed[project.id]) {
-      ReactGA.event({
-        category: 'Projects',
-        action: 'Expanded a project via IMAGE',
-        label: project.name
-      });
-    }
-
-    this.handleCardCollapse(project);
-  };
-
-  /**
-   * Triggers project expansion via 'Expand' button
-   * @param project
-   */
-  trackExpandClick = project => {
-    const { cardsCollapsed } = this.state;
-
-    if (!cardsCollapsed[project.id]) {
-      ReactGA.event({
-        category: 'Projects',
-        action: 'Expanded a project via BUTTON',
-        label: project.name
-      });
-    }
-
-    this.handleCardCollapse(project);
-  };
-
   /**
    * Turns the array of tools for a project entry into a string to display
    *
@@ -247,65 +203,42 @@ class Projects extends React.Component {
 
         default:
       }
-      console.log('src', src);
+      console.log('src', src, href);
 
       return (
-        <Chip
-          key={obj}
-          label={obj}
-          clickable={!!href}
-          href={href}
-          component="a"
-          target="_blank"
-        />
+        <Chip key={obj} clickable={!!href}>
+          {obj}
+        </Chip>
       );
     });
   };
 
   render() {
-    const { cardsCollapsed } = this.state;
-
     return (
       <Container id="projects" className="body">
         <h2>Projects</h2>
 
         {projectData.map(p => (
           <SingleCard key={p.id}>
-            <CardMedia
-              src={p.image}
-              alt={p.alt_name}
-              title={p.alt_name}
-              onClick={() => this.trackImageClick(p)}
-            />
+            <CardMedia src={p.image} alt={p.alt_name} title={p.alt_name} />
 
-            <CardContent>
-              <h4>{p.name}</h4>
-              {p.description}
-            </CardContent>
+            <h4>{p.name}</h4>
+            {p.description}
 
             <CardActions>
-              <div>
-                <Button onClick={() => this.trackExpandClick(p)}>
-                  {cardsCollapsed[p.id] ? 'Collapse' : 'Expand'}
-                </Button>
-                <MyLink name={'Project - ' + p.name} href={p.href}>
-                  <Button>Visit</Button>
-                </MyLink>
-              </div>
+              <MyLink name={'Project - ' + p.name} to={p.href}>
+                <Button>Visit</Button>
+              </MyLink>
 
               {p.github && (
-                <MyLink name={'Repo - ' + p.github} href={p.github}>
+                <MyLink name={'Repo - ' + p.github} to={p.github}>
                   <FontAwesomeIcon icon={faGithub} />
                 </MyLink>
               )}
             </CardActions>
 
-            <Collapse in={cardsCollapsed[p.id]} timeout="auto" unmountOnExit>
-              <CardContent>
-                <h5>Tools</h5>
-                <ChipContainer>{this.renderTools(p.tools)}</ChipContainer>
-              </CardContent>
-            </Collapse>
+            <h5>Tools</h5>
+            <ChipContainer>{this.renderTools(p.tools)}</ChipContainer>
           </SingleCard>
         ))}
       </Container>

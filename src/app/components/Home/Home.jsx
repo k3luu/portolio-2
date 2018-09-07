@@ -65,10 +65,14 @@ class Home extends React.Component {
       <Container id="home">
         <Content>
           <Name>
-            <ReactRevealText show={this.state.show}>Kathy Luu</ReactRevealText>
+            <ReactRevealText show={!this.props.loading}>
+              Kathy Luu
+            </ReactRevealText>
           </Name>
           <Title>
-            <ReactRevealText show={this.state.show}>Frontend Engineer</ReactRevealText>
+            <ReactRevealText show={!this.props.loading}>
+              Frontend Engineer
+            </ReactRevealText>
           </Title>
         </Content>
       </Container>
