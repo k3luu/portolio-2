@@ -100,13 +100,13 @@ const TextBox = styled.div`
 `;
 
 const TextLabel = styled.label`
-  color: ${props => (props.focus ? '#08708a' : '#032b2f')};
-  font-size: ${props => (props.focus ? '8px' : '12px')};
+  color: ${props => (props.active ? '#08708a' : '#032b2f')};
+  font-size: ${props => (props.active ? '8px' : '12px')};
   letter-spacing: 0.6px;
   text-transform: uppercase;
   transition: 0.2s;
   position: absolute;
-  bottom: ${props => (props.focus ? '65px' : '35px')};
+  bottom: ${props => (props.active ? '65px' : '35px')};
 `;
 
 const TextField = styled.input`
@@ -242,8 +242,6 @@ class Contact extends React.Component {
 
         <Content loading={mainState.loading}>
           <Info>
-            <h4 className="hp-mb30">Get in touch</h4>
-
             <SocialContainer>
               <SocialMediaIcons />
             </SocialContainer>
@@ -272,9 +270,8 @@ class Contact extends React.Component {
             <TextSection>
               <TextBox>
                 <TextLabel
-                  for="name"
-                  focus={error['name'].focus || !!error['name'].value}
-                  onClick={() => document.getElementById('name').focus()}
+                  htmlFor="name"
+                  active={error['name'].focus || !!error['name'].value}
                 >
                   Name
                 </TextLabel>
@@ -290,9 +287,8 @@ class Contact extends React.Component {
               </TextBox>
               <TextBox>
                 <TextLabel
-                  for="email"
-                  focus={error['email'].focus || !!error['email'].value}
-                  onClick={() => document.getElementById('email').focus()}
+                  htmlFor="email"
+                  active={error['email'].focus || !!error['email'].value}
                 >
                   Email
                 </TextLabel>
@@ -310,9 +306,8 @@ class Contact extends React.Component {
             <MessageBox>
               <TextBox>
                 <TextLabel
-                  for="message"
-                  focus={error['message'].focus || !!error['message'].value}
-                  onClick={() => document.getElementById('message').focus()}
+                  htmlFor="message"
+                  active={error['message'].focus || !!error['message'].value}
                 >
                   Message
                 </TextLabel>

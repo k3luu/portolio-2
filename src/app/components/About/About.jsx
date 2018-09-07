@@ -50,9 +50,18 @@ class About extends React.Component {
           interval={3000}
           infiniteLoop
         >
-          <img src="https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/photography.jpg" />
-          <img src="https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/reading.jpg" />
-          <img src="https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/hiking.jpg" />
+          <img
+            alt="Photography"
+            src="https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/photography.jpg"
+          />
+          <img
+            alt="Reading"
+            src="https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/reading.jpg"
+          />
+          <img
+            alt="Hiking"
+            src="https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/hiking.jpg"
+          />
         </Carousel>
       </Container>
     );

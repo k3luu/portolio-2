@@ -226,12 +226,16 @@ class Projects extends React.Component {
             {p.description}
 
             <CardActions>
-              <MyLink name={'Project - ' + p.name} to={p.href}>
+              <MyLink title={p.name} name={'Project - ' + p.name} to={p.href}>
                 <Button>Visit</Button>
               </MyLink>
 
               {p.github && (
-                <MyLink name={'Repo - ' + p.github} to={p.github}>
+                <MyLink
+                  title={`${p.name}- Github`}
+                  name={'Repo - ' + p.name}
+                  to={p.github}
+                >
                   <FontAwesomeIcon icon={faGithub} />
                 </MyLink>
               )}

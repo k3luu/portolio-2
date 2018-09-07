@@ -42,22 +42,22 @@ class SocialMediaIcons extends React.Component {
   render() {
     return (
       <Container>
-        <SocialLink to={config.linkedIn}>
+        <SocialLink title="LinkedIn" to={config.linkedIn}>
           <IconButton>
             <FontAwesomeIcon icon={faLinkedinIn} />
           </IconButton>
         </SocialLink>
-        <SocialLink to={config.github}>
+        <SocialLink title="Github" to={config.github}>
           <IconButton>
             <FontAwesomeIcon icon={faGithub} />
           </IconButton>
         </SocialLink>
-        <SocialLink to={config.instagram}>
+        <SocialLink title="Instagram" to={config.instagram}>
           <IconButton>
             <FontAwesomeIcon icon={faInstagram} />
           </IconButton>
         </SocialLink>
-        <SocialLink to={`mailto:${config.email}`}>
+        <SocialLink title="Email" to={`mailto:${config.email}`}>
           <IconButton>
             <FontAwesomeIcon icon={faEnvelope} />
           </IconButton>

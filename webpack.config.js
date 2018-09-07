@@ -85,6 +85,9 @@ module.exports = function(env) {
         meta: [{
           name: 'Description',
           content: 'Kathy Luu - Frontend Engineer at Doctor.com'
+        }, {
+          name: 'theme-color',
+          content: '#08708a'
         }]
       }),
       new webpack.BannerPlugin({
