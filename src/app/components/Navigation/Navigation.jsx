@@ -26,12 +26,17 @@ const Tab = styled.div`
   cursor: pointer;
   flex-grow: 1;
   justify-content: center;
+  transition: 0.2s;
 
   ${breakpoint('sm')`
     flex-grow: unset;
     font-size: 12px;
     padding: 0 40px;
   `};
+
+  &:hover {
+    color: #56b1bf;
+  }
 `;
 
 const Option = styled.div`

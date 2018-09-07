@@ -28,18 +28,19 @@ h4,
 h5,
 h6 {
     text-transform: uppercase;
-}
-
-h4 {
-    font-weight: unset;
-    letter-spacing: 0.8px;
+    font-weight: 400;
 }
 
 h2 {
     color: $daintree;
     font-size: 24px;
+    font-weight: bold;
     line-height: 24px;
     letter-spacing: 4px;
+}
+
+h4 {
+    letter-spacing: 0.6px;
 }
 
 h5 {

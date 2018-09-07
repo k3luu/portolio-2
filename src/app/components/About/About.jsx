@@ -17,16 +17,23 @@ class About extends React.Component {
     return (
       <Container id="about" className="body">
         <h2>About Me</h2>
-
         <p>
           Currently working as a frontend engineer at Doctor.com, contributing
           to a complete rewrite of our admin portal using React. It's been a
           whirlwind of learning and I'm honored to be a part of such an enormous
-          project. We just release the beta version!
+          project. We just released!
+        </p>
+
+        <p>
+          Outside of work, I have been getting out there with my trusty
+          four-legged companion, Pim. In contrast to my ‘heads down’ work, I
+          enjoys the relief and exhilaration from stepping into nature and
+          getting soaked by waterfalls. Being in the great outdoors reminds me
+          that life goes beyond coding and screens. Tiring out the pup is a big
+          plus, too.
         </p>
 
         <h4 className="hp-mt50">Education</h4>
-
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Img
             src="https://upload.wikimedia.org/wikipedia/commons/1/18/UCSD_Seal.png"
@@ -39,7 +46,6 @@ class About extends React.Component {
             <div>2011-2016</div>
           </div>
         </div>
-
         <h4 className="hp-mt50">Interests</h4>
         <Carousel
           centerMode

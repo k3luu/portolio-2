@@ -21,6 +21,19 @@ const IconButton = styled.div`
   padding: 10px;
   font-size: 20px;
   color: #687c87;
+
+  &.linkedin:hover {
+    color: #0077b5;
+  }
+  &.git:hover {
+    color: #767676;
+  }
+  &.ig:hover {
+    color: #cd486b;
+  }
+  &.email:hover {
+    color: #56b1bf;
+  }
 `;
 
 /**
@@ -43,22 +56,22 @@ class SocialMediaIcons extends React.Component {
     return (
       <Container>
         <SocialLink title="LinkedIn" to={config.linkedIn}>
-          <IconButton>
+          <IconButton className="linkedin">
             <FontAwesomeIcon icon={faLinkedinIn} />
           </IconButton>
         </SocialLink>
         <SocialLink title="Github" to={config.github}>
-          <IconButton>
+          <IconButton className="git">
             <FontAwesomeIcon icon={faGithub} />
           </IconButton>
         </SocialLink>
         <SocialLink title="Instagram" to={config.instagram}>
-          <IconButton>
+          <IconButton className="ig">
             <FontAwesomeIcon icon={faInstagram} />
           </IconButton>
         </SocialLink>
         <SocialLink title="Email" to={`mailto:${config.email}`}>
-          <IconButton>
+          <IconButton className="email">
             <FontAwesomeIcon icon={faEnvelope} />
           </IconButton>
         </SocialLink>
