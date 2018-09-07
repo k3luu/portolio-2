@@ -17,7 +17,6 @@ import { mainState } from './app/components/appReducers';
 
 // Components
 import AppIndex from './app/components/appIndex';
-import Success from './app/components/Success/Success';
 
 const breakPointsTheme = {
   breakpoints: {
@@ -45,7 +44,6 @@ ReactDOM.render(
       <Provider store={appStore}>
         <BrowserRouter>
           <Switch>
-            <Route path="/success" component={Success} name="Success" />
             <Route path="/" component={AppIndex} name="AppIndex" />
           </Switch>
         </BrowserRouter>

@@ -6,7 +6,7 @@ import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
 
 const HeaderBar = styled.div`
   background: #f6f9fd;
-  border-top: 4px solid #032b2f;
+  border-top: 4px solid #56b1bf;
   display: flex;
   justify-content: space-between;
   height: 70px;

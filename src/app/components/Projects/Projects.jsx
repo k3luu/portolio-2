@@ -23,32 +23,47 @@ const MyLink = props => (
 
 const Container = styled.div``;
 
-const SingleCard = styled.div`
-  width: 100%;
-  margin: 50px 0;
+const CardContainer = styled.div`
+  display: flex;
+  flex-flow: column;
+  align-content: center;
+  height: auto;
 
   ${breakpoint('sm')`
-    width: 50%;
+    flex-flow: row wrap;
+    justify-content: space-between;
   `};
 `;
 
-// const CardContainer = styled.div`
-//   display: flex;
-//   flex-flow: column;
-//   align-content: center;
-//   height: auto;
-//   margin: -15px;
-//
-//   ${breakpoint('sm')`
-//     flex-flow: row wrap;
-//   `};
-// `;
-
-const CardMedia = styled.img`
+const SingleCard = styled.div`
   width: 100%;
+  margin: 50px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+
+  ${breakpoint('sm')`
+    width: 49%;
+  `};
 `;
 
-const CardActions = styled.div``;
+const CardMedia = styled.div`
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+`;
+
+const CardContent = styled.div`
+  padding: 10px 20px;
+`;
+
+const CardHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const CardDescription = styled.div`
+  margin: 20px 0;
+`;
 
 const ChipContainer = styled.div`
   display: flex;
@@ -73,18 +88,14 @@ const Chip = styled.div`
   background-color: #e0e0e0;
 `;
 
-const Button = styled.button`
-  color: ${props => (props.disabled ? 'rgba(0, 0, 0, 0.26)' : '#fff')};
-  background: ${props => (props.disabled ? 'rgba(0, 0, 0, 0.12)' : '#032b2f')};
-  border: 0;
-  border-radius: 2px;
-  margin-top: 30px;
-  margin-right: 10px;
-  padding: 5px 10px;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: 0.2s ease;
-  cursor: pointer;
+const IconButton = styled.div`
+  font-size: 20px;
+  color: #687c87;
+  margin: 20px 0;
+
+  &:hover {
+    color: #767676;
+  }
 `;
 
 class Projects extends React.Component {
@@ -218,33 +229,41 @@ class Projects extends React.Component {
       <Container id="projects" className="body">
         <h2>Projects</h2>
 
-        {projectData.map(p => (
-          <SingleCard key={p.id}>
-            <CardMedia src={p.image} alt={p.alt_name} title={p.alt_name} />
+        <CardContainer>
+          {projectData.map(p => (
+            <SingleCard key={p.id}>
+              <CardMedia style={{ backgroundImage: `url(${p.image})` }} />
 
-            <h4>{p.name}</h4>
-            {p.description}
+              <CardContent>
+                <CardHeader>
+                  <MyLink
+                    title={p.name}
+                    name={'Project - ' + p.name}
+                    to={p.href}
+                  >
+                    <h4>{p.name}</h4>
+                  </MyLink>
+                  {p.github && (
+                    <MyLink
+                      title={`${p.name}- Github`}
+                      name={'Repo - ' + p.name}
+                      to={p.github}
+                    >
+                      <IconButton>
+                        <FontAwesomeIcon icon={faGithub} />
+                      </IconButton>
+                    </MyLink>
+                  )}
+                </CardHeader>
 
-            <CardActions>
-              <MyLink title={p.name} name={'Project - ' + p.name} to={p.href}>
-                <Button>Visit</Button>
-              </MyLink>
+                <CardDescription>{p.description}</CardDescription>
 
-              {p.github && (
-                <MyLink
-                  title={`${p.name}- Github`}
-                  name={'Repo - ' + p.name}
-                  to={p.github}
-                >
-                  <FontAwesomeIcon icon={faGithub} />
-                </MyLink>
-              )}
-            </CardActions>
-
-            <h5>Tools</h5>
-            <ChipContainer>{this.renderTools(p.tools)}</ChipContainer>
-          </SingleCard>
-        ))}
+                <h5>Tools</h5>
+                <ChipContainer>{this.renderTools(p.tools)}</ChipContainer>
+              </CardContent>
+            </SingleCard>
+          ))}
+        </CardContainer>
       </Container>
     );
   }
