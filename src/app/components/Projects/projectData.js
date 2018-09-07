@@ -41,6 +41,6 @@ export const projectData = [
     href: 'http://kathyluu.io',
     github: 'https://github.com/k3luu/kathyluu',
     description: 'My portfolio.',
-    tools: ['React', 'Webpack', 'styled-components', 'Google Maps API', 'Netlify']
+    tools: ['Preact', 'Webpack', 'styled-components', 'Google Maps API', 'Netlify']
   }
 ];

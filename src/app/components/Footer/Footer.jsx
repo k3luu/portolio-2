@@ -13,6 +13,9 @@ const FooterBar = styled.div`
   padding: 20px;
   position: absolute;
   bottom: 0;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
 
   ${breakpoint('sm')`
     padding: 0 50px;  

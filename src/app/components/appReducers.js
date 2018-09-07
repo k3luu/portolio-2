@@ -2,7 +2,7 @@ import { APP_ON_LOAD } from './appActions';
 
 export function mainState(
   state = {
-    loading: true
+    loading: false
   },
   action
 ) {

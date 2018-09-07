@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import MainLoader from './Loader/MainLoader';
+// import MainLoader from './Loader/MainLoader';
 import Header from './Header/Header';
 import Home from './Home/Home';
 import About from './About/About';
@@ -42,8 +42,8 @@ class AppIndex extends React.Component {
     const { mainState } = this.props;
 
     switch (type) {
-      case 'loader':
-        return mainState.loading && <MainLoader />;
+      // case 'loader':
+      //   return mainState.loading && <MainLoader />;
       case 'header':
         return !mainState.loading && <Header />;
       case 'home':
@@ -64,7 +64,7 @@ class AppIndex extends React.Component {
 
     return (
       <AppContainer loading={mainState.loading}>
-        {this.renderComponent('loader')}
+        {/*{this.renderComponent('loader')}*/}
         {this.renderComponent('header')}
         {this.renderComponent('home')}
         {this.renderComponent('projectData')}

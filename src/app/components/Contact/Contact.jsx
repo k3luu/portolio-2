@@ -7,7 +7,7 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import config from '../../SiteConfig';
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
-import Map from '../Map/Map';
+// import Map from '../Map/Map';
 
 const mapStateToProps = state => ({
   mainState: state.mainState
@@ -50,6 +50,7 @@ const Note = styled.div`
   font-size: 10px;
   text-transform: uppercase;
   margin-left: 25px;
+  letter-spacing: 0.5px;
 `;
 
 const MailContainer = styled.div`
@@ -138,7 +139,7 @@ const Button = styled.button`
   color: ${props => (props.disabled ? 'rgba(0, 0, 0, 0.26)' : '#fff')};
   background: ${props => (props.disabled ? 'rgba(0, 0, 0, 0.12)' : '#032b2f')};
   border: 0;
-  border-radius: 3px;
+  border-radius: 2px;
   margin-top: 50px;
   padding: 10px 20px;
   font-weight: bold;
@@ -233,12 +234,11 @@ class Contact extends React.Component {
     const { mainState } = this.props;
     const { error, submitValidation } = this.state;
 
-    console.log(error.name);
     return (
       <Container id="contact" className="body" loading={mainState.loading}>
         {!mainState.loading && <h2>Contact Me</h2>}
 
-        <Map />
+        {/*<Map />*/}
 
         <Content loading={mainState.loading}>
           <Info>
@@ -271,10 +271,15 @@ class Contact extends React.Component {
             <input type="hidden" name="form-name" value="contact" />
             <TextSection>
               <TextBox>
-                <TextLabel focus={error['name'].focus || !!error['name'].value}>
+                <TextLabel
+                  for="name"
+                  focus={error['name'].focus || !!error['name'].value}
+                  onClick={() => document.getElementById('name').focus()}
+                >
                   Name
                 </TextLabel>
                 <TextField
+                  id="name"
                   name="name"
                   type="text"
                   onChange={this.handleValidation}
@@ -285,11 +290,14 @@ class Contact extends React.Component {
               </TextBox>
               <TextBox>
                 <TextLabel
+                  for="email"
                   focus={error['email'].focus || !!error['email'].value}
+                  onClick={() => document.getElementById('email').focus()}
                 >
                   Email
                 </TextLabel>
                 <TextField
+                  id="email"
                   name="email"
                   type="email"
                   onChange={this.handleValidation}
@@ -302,11 +310,14 @@ class Contact extends React.Component {
             <MessageBox>
               <TextBox>
                 <TextLabel
+                  for="message"
                   focus={error['message'].focus || !!error['message'].value}
+                  onClick={() => document.getElementById('message').focus()}
                 >
                   Message
                 </TextLabel>
                 <TextField
+                  id="message"
                   name="message"
                   label="Message"
                   error={!error['message'].valid}

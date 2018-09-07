@@ -27,6 +27,7 @@ const Container = styled.div``;
 
 const SingleCard = styled.div`
   width: 100%;
+  margin: 50px 0;
 
   ${breakpoint('sm')`
     width: 50%
@@ -45,8 +46,6 @@ const SingleCard = styled.div`
 //   `};
 // `;
 
-const Card = styled.div``;
-
 const CardMedia = styled.img`
   width: 100%;
 `;
@@ -59,6 +58,19 @@ const ChipContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
   margin: 0 -5px;
+`;
+
+const Button = styled.button`
+  color: ${props => (props.disabled ? 'rgba(0, 0, 0, 0.26)' : '#fff')};
+  background: ${props => (props.disabled ? 'rgba(0, 0, 0, 0.12)' : '#032b2f')};
+  border: 0;
+  border-radius: 2px;
+  margin-top: 30px;
+  margin-right: 10px;
+  padding: 5px 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 0.2s ease;
 `;
 
 class Projects extends React.Component {
@@ -259,43 +271,41 @@ class Projects extends React.Component {
 
         {projectData.map(p => (
           <SingleCard key={p.id}>
-            <Card>
-              <CardMedia
-                src={p.image}
-                alt={p.alt_name}
-                title={p.alt_name}
-                onClick={() => this.trackImageClick(p)}
-              />
+            <CardMedia
+              src={p.image}
+              alt={p.alt_name}
+              title={p.alt_name}
+              onClick={() => this.trackImageClick(p)}
+            />
 
+            <CardContent>
+              <h4>{p.name}</h4>
+              {p.description}
+            </CardContent>
+
+            <CardActions>
+              <div>
+                <Button onClick={() => this.trackExpandClick(p)}>
+                  {cardsCollapsed[p.id] ? 'Collapse' : 'Expand'}
+                </Button>
+                <MyLink name={'Project - ' + p.name} href={p.href}>
+                  <Button>Visit</Button>
+                </MyLink>
+              </div>
+
+              {p.github && (
+                <MyLink name={'Repo - ' + p.github} href={p.github}>
+                  <FontAwesomeIcon icon={faGithub} />
+                </MyLink>
+              )}
+            </CardActions>
+
+            <Collapse in={cardsCollapsed[p.id]} timeout="auto" unmountOnExit>
               <CardContent>
-                <h4>{p.name}</h4>
-                {p.description}
+                <h5>Tools</h5>
+                <ChipContainer>{this.renderTools(p.tools)}</ChipContainer>
               </CardContent>
-
-              <CardActions>
-                <div>
-                  <button onClick={() => this.trackExpandClick(p)}>
-                    {cardsCollapsed[p.id] ? 'Collapse' : 'Expand'}
-                  </button>
-                  <MyLink name={'Project - ' + p.name} href={p.href}>
-                    <button>Visit</button>
-                  </MyLink>
-                </div>
-
-                {p.github && (
-                  <MyLink name={'Repo - ' + p.github} href={p.github}>
-                    <FontAwesomeIcon icon={faGithub} />
-                  </MyLink>
-                )}
-              </CardActions>
-
-              <Collapse in={cardsCollapsed[p.id]} timeout="auto" unmountOnExit>
-                <CardContent>
-                  <h5>Tools</h5>
-                  <ChipContainer>{this.renderTools(p.tools)}</ChipContainer>
-                </CardContent>
-              </Collapse>
-            </Card>
+            </Collapse>
           </SingleCard>
         ))}
       </Container>
