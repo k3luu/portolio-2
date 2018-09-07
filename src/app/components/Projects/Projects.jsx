@@ -61,6 +61,12 @@ const CardHeader = styled.div`
   justify-content: space-between;
 `;
 
+const CardTitle = styled.h4`
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 const CardDescription = styled.div`
   margin: 20px 0;
 `;
@@ -241,8 +247,9 @@ class Projects extends React.Component {
                     name={'Project - ' + p.name}
                     to={p.href}
                   >
-                    <h4>{p.name}</h4>
+                    <CardTitle>{p.name}</CardTitle>
                   </MyLink>
+
                   {p.github && (
                     <MyLink
                       title={`${p.name}- Github`}

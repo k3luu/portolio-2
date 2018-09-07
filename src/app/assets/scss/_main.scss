@@ -19,6 +19,10 @@ body {
 a {
     color: $venice-blue;
     text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 h1,
@@ -40,6 +44,7 @@ h2 {
 }
 
 h4 {
+    font-weight: bold;
     letter-spacing: 0.6px;
 }
 

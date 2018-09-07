@@ -84,6 +84,7 @@ class Navigation extends React.Component {
     document
       .getElementById(match)
       .scrollIntoView({ behavior: 'smooth', block: 'start' });
+
     ReactGA.event({
       category: 'Navigation',
       action: 'Clicked on a tab',

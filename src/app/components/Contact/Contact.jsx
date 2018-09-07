@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,18 +8,10 @@ import config from '../../SiteConfig';
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
 // import Map from '../Map/Map';
 
-const mapStateToProps = state => ({
-  mainState: state.mainState
-});
-
-const Container = styled.div`
-  min-height: ${props => (props.loading ? 0 : '')};
-  height: ${props => (props.loading ? 0 : '')};
-  padding: ${props => (props.loading ? 0 : '')};
-`;
+const Container = styled.div``;
 
 const Content = styled.div`
-  display: ${props => (props.loading ? 'none' : 'flex')};
+  display: flex;
   flex-direction: column;
   margin-top: 40px;
   height: 300px;
@@ -93,20 +84,26 @@ const TextSection = styled.div`
 `;
 
 const TextBox = styled.div`
+  color: ${props => (props.active ? '#08708a' : '#032b2f')};
   flex-grow: 1;
   margin: 10px;
   position: relative;
   height: 70px;
+
+  &:hover {
+    color: #08708a;
+  }
 `;
 
 const TextLabel = styled.label`
-  color: ${props => (props.active ? '#08708a' : '#032b2f')};
   font-size: ${props => (props.active ? '8px' : '12px')};
   letter-spacing: 0.6px;
   text-transform: uppercase;
   transition: 0.2s;
   position: absolute;
+  width: 100%;
   bottom: ${props => (props.active ? '65px' : '35px')};
+  cursor: text;
 `;
 
 const TextField = styled.input`
@@ -122,6 +119,10 @@ const TextField = styled.input`
   &:focus {
     border-bottom: 2px solid #08708a;
     outline: 0;
+  }
+
+  &:hover {
+    border-bottom: 2px solid #08708a;
   }
 `;
 
@@ -145,6 +146,7 @@ const Button = styled.button`
   font-weight: bold;
   text-transform: uppercase;
   transition: 0.2s ease;
+  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
 `;
 
 let validationObj = () => {
@@ -231,16 +233,15 @@ class Contact extends React.Component {
   };
 
   render() {
-    const { mainState } = this.props;
     const { error, submitValidation } = this.state;
 
     return (
-      <Container id="contact" className="body" loading={mainState.loading}>
-        {!mainState.loading && <h2>Contact Me</h2>}
+      <Container id="contact" className="body">
+        <h2>Contact Me</h2>
 
         {/*<Map />*/}
 
-        <Content loading={mainState.loading}>
+        <Content>
           <Info>
             <SocialContainer>
               <SocialMediaIcons />
@@ -250,8 +251,8 @@ class Contact extends React.Component {
               <a href={`mailto:${config.email}`}>
                 <FontAwesomeIcon
                   icon={faEnvelope}
-                  style={{ fontSize: 16, marginRight: 5 }}
-                />{' '}
+                  style={{ fontSize: 16, marginRight: 10 }}
+                />
                 {config.email}
               </a>
               <CopyToClipboard text={config.email}>
@@ -268,7 +269,7 @@ class Contact extends React.Component {
           >
             <input type="hidden" name="form-name" value="contact" />
             <TextSection>
-              <TextBox>
+              <TextBox active={error['name'].focus || !!error['name'].value}>
                 <TextLabel
                   htmlFor="name"
                   active={error['name'].focus || !!error['name'].value}
@@ -285,7 +286,7 @@ class Contact extends React.Component {
                   onBlur={this.onBlur}
                 />
               </TextBox>
-              <TextBox>
+              <TextBox active={error['email'].focus || !!error['email'].value}>
                 <TextLabel
                   htmlFor="email"
                   active={error['email'].focus || !!error['email'].value}
@@ -304,7 +305,9 @@ class Contact extends React.Component {
               </TextBox>
             </TextSection>
             <MessageBox>
-              <TextBox>
+              <TextBox
+                active={error['message'].focus || !!error['message'].value}
+              >
                 <TextLabel
                   htmlFor="message"
                   active={error['message'].focus || !!error['message'].value}
@@ -333,4 +336,4 @@ class Contact extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(Contact);
+export default Contact;
