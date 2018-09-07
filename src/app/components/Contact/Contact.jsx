@@ -48,7 +48,6 @@ const Info = styled.div`
 const Note = styled.div`
   cursor: pointer;
   font-size: 10px;
-  font-weight: bold;
   text-transform: uppercase;
   margin-left: 25px;
 `;
@@ -95,20 +94,32 @@ const TextSection = styled.div`
 const TextBox = styled.div`
   flex-grow: 1;
   margin: 10px;
+  position: relative;
+  height: 70px;
+`;
+
+const TextLabel = styled.label`
+  color: ${props => (props.focus ? '#08708a' : '#032b2f')};
+  font-size: ${props => (props.focus ? '8px' : '12px')};
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  transition: 0.2s;
+  position: absolute;
+  bottom: ${props => (props.focus ? '65px' : '35px')};
 `;
 
 const TextField = styled.input`
   border: 0;
   border-bottom: ${props =>
-    props.error ? '2px solid red' : '1px solid #08708a'};
+    props.error ? '2px solid red' : '1px solid #032b2f'};
   font-size: 14px;
   box-sizing: border-box;
   padding: 10px 1px;
   width: 100%;
-  transition: 0.2s ease;
+  transition: 0.2s;
 
   &:focus {
-    border-bottom: 2px solid #032b2f;
+    border-bottom: 2px solid #08708a;
     outline: 0;
   }
 `;
@@ -138,7 +149,9 @@ const Button = styled.button`
 let validationObj = () => {
   return {
     dirty: false,
-    valid: true
+    valid: true,
+    focus: false,
+    value: null
   };
 };
 
@@ -152,6 +165,28 @@ class Contact extends React.Component {
       message: new validationObj()
     },
     submitValidation: false
+  };
+
+  onFocus = e => {
+    const name = e.target.name;
+    const validationObj = Object.assign({}, this.state.error);
+
+    validationObj[name].focus = true;
+
+    this.setState({
+      error: validationObj
+    });
+  };
+
+  onBlur = e => {
+    const name = e.target.name;
+    const validationObj = Object.assign({}, this.state.error);
+
+    validationObj[name].focus = false;
+
+    this.setState({
+      error: validationObj
+    });
   };
 
   /**
@@ -183,6 +218,7 @@ class Contact extends React.Component {
     const validationObj = Object.assign({}, this.state.error);
 
     validationObj[name].dirty = true;
+    validationObj[name].value = value === '' ? null : value;
 
     if (name === 'email') validationObj[name].valid = validateEmail.test(value);
     else validationObj[name].valid = value !== '';
@@ -197,6 +233,7 @@ class Contact extends React.Component {
     const { mainState } = this.props;
     const { error, submitValidation } = this.state;
 
+    console.log(error.name);
     return (
       <Container id="contact" className="body" loading={mainState.loading}>
         {!mainState.loading && <h2>Contact Me</h2>}
@@ -234,32 +271,48 @@ class Contact extends React.Component {
             <input type="hidden" name="form-name" value="contact" />
             <TextSection>
               <TextBox>
-                <div>Name</div>
+                <TextLabel focus={error['name'].focus || !!error['name'].value}>
+                  Name
+                </TextLabel>
                 <TextField
                   name="name"
                   type="text"
                   onChange={this.handleValidation}
                   error={!error['name'].valid}
+                  onFocus={this.onFocus}
+                  onBlur={this.onBlur}
                 />
               </TextBox>
               <TextBox>
-                <div>Email</div>
+                <TextLabel
+                  focus={error['email'].focus || !!error['email'].value}
+                >
+                  Email
+                </TextLabel>
                 <TextField
                   name="email"
                   type="email"
                   onChange={this.handleValidation}
                   error={!error['email'].valid}
+                  onFocus={this.onFocus}
+                  onBlur={this.onBlur}
                 />
               </TextBox>
             </TextSection>
             <MessageBox>
               <TextBox>
-                <div>Message</div>
+                <TextLabel
+                  focus={error['message'].focus || !!error['message'].value}
+                >
+                  Message
+                </TextLabel>
                 <TextField
                   name="message"
                   label="Message"
                   error={!error['message'].valid}
                   onChange={this.handleValidation}
+                  onFocus={this.onFocus}
+                  onBlur={this.onBlur}
                 />
               </TextBox>
             </MessageBox>

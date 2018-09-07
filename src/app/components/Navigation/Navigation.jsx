@@ -17,7 +17,7 @@ const Container = styled.div`
 `;
 
 const Tab = styled.div`
-  color: ${props => (props.active ? '#56b1bf' : '#6b6b6b')};
+  color: ${props => (props.active ? '#56b1bf' : '#687C87')};
   display: flex;
   align-items: center;
   font-size: 18px;

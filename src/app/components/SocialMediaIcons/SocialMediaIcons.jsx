@@ -2,7 +2,11 @@ import React from 'react';
 import ReactGA from 'react-ga';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedinIn, faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import {
+  faLinkedinIn,
+  faGithub,
+  faInstagram
+} from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import config from '../../SiteConfig';
 
@@ -16,7 +20,7 @@ const Container = styled.div`
 const IconButton = styled.div`
   padding: 10px;
   font-size: 20px;
-  color: #032b2f;
+  color: #687c87;
 `;
 
 /**
