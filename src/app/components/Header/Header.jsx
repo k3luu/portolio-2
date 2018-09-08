@@ -5,8 +5,9 @@ import Navigation from '../Navigation/Navigation';
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
 
 const HeaderBar = styled.div`
-  background: #f6f9fd;
-  border-top: 4px solid #56b1bf;
+  background: #fff;
+  border-top: 4px solid #08708a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
   display: flex;
   justify-content: space-between;
   height: 70px;

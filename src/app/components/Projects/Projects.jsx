@@ -53,22 +53,26 @@ const CardMedia = styled.div`
 `;
 
 const CardContent = styled.div`
-  padding: 10px 20px;
+  padding: 5px 20px;
 `;
 
 const CardHeader = styled.div`
+  background: #f6f9fd;
   display: flex;
   justify-content: space-between;
+  padding: 5px 20px;
 `;
 
 const CardTitle = styled.h4`
+  margin: 10px 0;
+
   &:hover {
     text-decoration: underline;
   }
 `;
 
 const CardDescription = styled.div`
-  margin: 20px 0;
+  margin: 20px;
 `;
 
 const ChipContainer = styled.div`
@@ -97,7 +101,7 @@ const Chip = styled.div`
 const IconButton = styled.div`
   font-size: 20px;
   color: #687c87;
-  margin: 20px 0;
+  margin: 10px 0;
 
   &:hover {
     color: #767676;
@@ -240,31 +244,27 @@ class Projects extends React.Component {
             <SingleCard key={p.id}>
               <CardMedia style={{ backgroundImage: `url(${p.image})` }} />
 
-              <CardContent>
-                <CardHeader>
+              <CardHeader>
+                <MyLink title={p.name} name={'Project - ' + p.name} to={p.href}>
+                  <CardTitle>{p.name}</CardTitle>
+                </MyLink>
+
+                {p.github && (
                   <MyLink
-                    title={p.name}
-                    name={'Project - ' + p.name}
-                    to={p.href}
+                    title={`${p.name}- Github`}
+                    name={'Repo - ' + p.name}
+                    to={p.github}
                   >
-                    <CardTitle>{p.name}</CardTitle>
+                    <IconButton>
+                      <FontAwesomeIcon icon={faGithub} />
+                    </IconButton>
                   </MyLink>
+                )}
+              </CardHeader>
 
-                  {p.github && (
-                    <MyLink
-                      title={`${p.name}- Github`}
-                      name={'Repo - ' + p.name}
-                      to={p.github}
-                    >
-                      <IconButton>
-                        <FontAwesomeIcon icon={faGithub} />
-                      </IconButton>
-                    </MyLink>
-                  )}
-                </CardHeader>
+              <CardDescription>{p.description}</CardDescription>
 
-                <CardDescription>{p.description}</CardDescription>
-
+              <CardContent>
                 <h5>Tools</h5>
                 <ChipContainer>{this.renderTools(p.tools)}</ChipContainer>
               </CardContent>
