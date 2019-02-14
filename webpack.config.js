@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const SystemBellPlugin = require('system-bell-webpack-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const PACKAGE = require('./package.json');
@@ -14,6 +13,8 @@ const WebpackBar = require('webpackbar');
 const sourcePath = path.join(__dirname, './src');
 const staticsPath = path.join(__dirname, './build');
 const port = 8080;
+
+process.traceDeprecation = true;
 
 module.exports = function(env, argv) {
   const isProd = argv.mode === 'production';
@@ -102,7 +103,6 @@ module.exports = function(env, argv) {
         }
       ),
       new CaseSensitivePathsPlugin(),
-      new SystemBellPlugin(),
       new DuplicatePackageCheckerPlugin(),
       new StyleLintPlugin({
         files: './app/assets/scss/**/*.scss'
