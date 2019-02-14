@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const path = require('path');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
@@ -76,8 +75,7 @@ module.exports = function(env, argv) {
           new Date().getHours() +
           ':' +
           new Date().getMinutes()
-      }),
-      new ExtractTextPlugin(isProd ? 'styles.[hash:6].css' : 'styles.[chunkhash:6].css')
+      })
     );
   } else {
     plugins.push(
@@ -154,15 +152,7 @@ module.exports = function(env, argv) {
 
         {
           test: /\.(scss|css)$/,
-          // exclude: /node_modules/,
-          use: isProd // If Prod
-            ? ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: ['css-loader', 'sass-loader']
-              })
-            : // Else
-
-              [
+          use: [
                 {
                   loader: 'style-loader',
                   options: {
