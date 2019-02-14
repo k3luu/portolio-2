@@ -36,12 +36,8 @@ module.exports = function(env, argv) {
         'process.env.NODE_ENV': JSON.stringify('production')
       }),
       new CompressionPlugin({
-        asset: '[path].gz[query]',
-        algorithm: 'gzip',
-        test: /\.js$|\.css$|\.html$/,
-        threshold: 0,
-        minRatio: 0.9,
-        deleteOriginalAssets: false
+        filename: '[path].gz[query]',
+        test: /\.js$|\.css$|\.html$/
       }),
       new HtmlWebpackPlugin({
         inject: false,
