@@ -266,6 +266,7 @@ class Contact extends React.Component {
             method="POST"
             action="/success"
             data-netlify="true"
+            data-netlify-honeypot="bot-field"
           >
             <input type="hidden" name="form-name" value="contact" />
             <TextSection>
@@ -304,6 +305,11 @@ class Contact extends React.Component {
                 />
               </TextBox>
             </TextSection>
+
+            <label style={{ visibility: 'hidden' }}>
+              Don’t fill this out if you're human: <input name="bot-field" />
+            </label>
+            
             <MessageBox>
               <TextBox
                 active={error['message'].focus || !!error['message'].value}
