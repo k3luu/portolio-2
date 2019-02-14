@@ -36,7 +36,7 @@ class About extends React.Component {
         <h4 className="hp-mt50">Education</h4>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Img
-            src="https://upload.wikimedia.org/wikipedia/commons/1/18/UCSD_Seal.png"
+            src="https://s3-us-west-1.amazonaws.com/kaluu/portfolio/assets/UCSD_Seal.png"
             alt="UCSD"
           />
           <div style={{ marginLeft: 30 }}>

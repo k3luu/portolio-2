@@ -6,7 +6,7 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import config from '../../SiteConfig';
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
-// import Map from '../Map/Map';
+import Map from '../Map/Map';
 
 const Container = styled.div``;
 
@@ -239,7 +239,7 @@ class Contact extends React.Component {
       <Container id="contact" className="body">
         <h2>Contact Me</h2>
 
-        {/*<Map />*/}
+        <Map />
 
         <Content>
           <Info>
