@@ -220,7 +220,7 @@ class Projects extends React.Component {
 
         default:
       }
-      console.log('src', src, href);
+      console.log(src);
 
       return (
         <Chip key={obj} clickable={!!href}>

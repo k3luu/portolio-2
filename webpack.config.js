@@ -5,32 +5,24 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const SystemBellPlugin = require('system-bell-webpack-plugin');
-const NyanProgressPlugin = require('nyan-progress-webpack-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
-const FlowBabelWebpackPlugin = require('flow-babel-webpack-plugin');
 const PACKAGE = require('./package.json');
+const WebpackBar = require('webpackbar');
 
 const sourcePath = path.join(__dirname, './src');
 const staticsPath = path.join(__dirname, './build');
 const port = 8080;
 
-module.exports = function(env) {
-  const nodeEnv = env && env.prod ? 'production' : 'development';
-  const isProd = nodeEnv === 'production';
+module.exports = function(env, argv) {
+  const isProd = argv.mode === 'production';
 
   const plugins = [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: Infinity,
-      filename: isProd ? '[name].bundle.[hash:6].js' : '[name].bundle.js'
-    }),
-    new webpack.NamedModulesPlugin(),
     new webpack.DefinePlugin({
-      NODE_ENV: JSON.stringify(nodeEnv)
-    })
+      NODE_ENV: JSON.stringify(argv.mode)
+    }),
+    new WebpackBar({ name: 'Kathy Luu - Portfolio', color: '#08708a' })
   ];
 
   if (isProd) {
@@ -92,24 +84,23 @@ module.exports = function(env) {
       }),
       new webpack.BannerPlugin({
         banner:
-          `Version: ` +
+          'Version: ' +
           PACKAGE.version +
-          ` Date: ` +
+          ' Date: ' +
           parseInt(new Date().getMonth() + 1) +
-          `/` +
+          '/' +
           new Date().getDate() +
-          `/` +
+          '/' +
           new Date().getFullYear() +
-          ` @ ` +
+          ' @ ' +
           new Date().getHours() +
-          `:` +
+          ':' +
           new Date().getMinutes()
       }),
       new ExtractTextPlugin(isProd ? 'styles.[hash:6].css' : 'styles.[chunkhash:6].css')
     );
   } else {
     plugins.push(
-      new webpack.HotModuleReplacementPlugin(),
       new BrowserSyncPlugin(
         // BrowserSync options
         {
@@ -128,16 +119,13 @@ module.exports = function(env) {
         }
       ),
       new CaseSensitivePathsPlugin(),
-      new FriendlyErrorsWebpackPlugin(),
       new SystemBellPlugin(),
-      new NyanProgressPlugin(),
       new DuplicatePackageCheckerPlugin(),
       new StyleLintPlugin({
         files: './app/assets/scss/**/*.scss'
       }),
-      new FlowBabelWebpackPlugin(),
       new webpack.DefinePlugin({
-        NODE_ENV: JSON.stringify(nodeEnv),
+        PRODUCTION: JSON.stringify(false),
         PORT: JSON.stringify(port)
       })
     );
@@ -147,8 +135,15 @@ module.exports = function(env) {
     devtool: isProd ? 'hidden-source-map' : 'eval',
     context: sourcePath,
     entry: {
-      js: 'app.js',
-      vendor: ['react']
+      js: [
+        // react-error-overlay
+        !isProd && 'react-dev-utils/webpackHotDevClient',
+        // polyfills
+        'babel-polyfill',
+        'whatwg-fetch',
+        // app entry
+        'app.js'
+      ].filter(Boolean)
     },
     output: {
       path: staticsPath,
@@ -249,7 +244,6 @@ module.exports = function(env) {
         'react-dom': 'preact-compat'
       }
     },
-
 
     plugins,
 
