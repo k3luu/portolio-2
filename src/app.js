@@ -16,11 +16,11 @@ function App() {
         products and services DDC has to offer.
       </p>
       <p>
-        Outside of coding, I like getting out there with my trusty four-legged
-        companion, Pim. In contrast to my head down work, I enjoy the relief and
-        exhilaration from stepping into nature and getting soaked by waterfalls.
-        Being in the great outdoors reminds me that life goes beyond words and
-        screens. Tiring out the pup is a big plus, too.
+        Outside of coding, I like going to the great outdoors with my trusty
+        four-legged companion, Pim. In contrast to my head down work, I enjoy
+        the relief and exhilaration from stepping into nature and getting soaked
+        by waterfalls. Being outside in nature reminds me that life goes beyond
+        words and screens. Tiring out the pup is a big plus, too.
       </p>
     </div>
   );
