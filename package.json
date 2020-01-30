@@ -1,107 +1,34 @@
 {
-  "name": "kathyluu",
-  "version": "1",
-  "description": "Webpack",
-  "main": "index.js",
-  "scripts": {
-    "watch": "yarn install && nodemon --watch webpack.config.js --exec \"webpack-dev-server --hot --mode development\"",
-    "kill": "killall -9 node",
-    "build": "rm -rf build && webpack --mode production",
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git"
-  },
-  "author": "kathyluu",
-  "license": "ISC",
-  "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-class-properties": "^7.3.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/preset-typescript": "^7.1.0",
-    "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.5",
-    "babel-plugin-styled-components": "^1.10.0",
-    "browser-sync": "^2.26.3",
-    "browser-sync-webpack-plugin": "^2.2.2",
-    "case-sensitive-paths-webpack-plugin": "^2.2.0",
-    "compression-webpack-plugin": "^2.0.0",
-    "css-loader": "^2.1.0",
-    "duplicate-package-checker-webpack-plugin": "^3.0.0",
-    "eslint": "^5.13.0",
-    "eslint-config-prettier": "^4.0.0",
-    "eslint-loader": "^2.1.2",
-    "eslint-plugin-react": "^7.12.4",
-    "express": "^4.15.2",
-    "file-loader": "^3.0.1",
-    "html-loader": "^0.4.5",
-    "html-webpack-plugin": "^3.2.0",
-    "html-webpack-template": "^6.2.0",
-    "image-webpack-loader": "^4.6.0",
-    "json-loader": "^0.5.4",
-    "license-banner-webpack-plugin": "^0.0.4",
-    "lodash": "^4.17.12",
-    "node-sass": "^4.5.2",
-    "nodemon": "^1.11.0",
-    "npm": "^5.0.3",
-    "prettier": "^1.6.1",
-    "raw-loader": "^0.5.1",
-    "react-dev-utils": "^7.0.3",
-    "react-redux": "^5.0.7",
-    "react-reveal-text": "^0.1.1",
-    "react-router": "^4.2.0",
-    "redux-thunk": "2.2.0",
-    "sass-loader": "^6.0.3",
-    "style-loader": "0.13.2",
-    "styled-components": "^3.2.6",
-    "styled-components-breakpoint": "^2.0.2",
-    "stylelint-webpack-plugin": "^0.10.5",
-    "url-loader": "^0.6.2",
-    "webpack": "^4.29.3",
-    "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.1.14",
-    "webpackbar": "^3.1.5"
-  },
+  "name": "hi",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "@babel/polyfill": "^7.2.5",
-    "@fortawesome/fontawesome-free": "^5.3.1",
-    "@fortawesome/fontawesome-svg-core": "^1.2.4",
-    "@fortawesome/free-brands-svg-icons": "^5.3.1",
-    "@fortawesome/free-regular-svg-icons": "^5.3.1",
-    "@fortawesome/free-solid-svg-icons": "^5.3.1",
-    "@fortawesome/react-fontawesome": "^0.1.2",
-    "babel-polyfill": "^6.26.0",
-    "google-map-react": "^1.0.3",
-    "preact": "^8.3.1",
-    "preact-compat": "^3.18.4",
-    "react": "^16.3.2",
-    "react-copy-to-clipboard": "^5.0.1",
-    "react-dom": "^16.3.2",
-    "react-ga": "^2.5.3",
-    "react-responsive-carousel": "^3.1.41",
-    "react-router-dom": "^4.2.2",
-    "redux": "3.6.0",
-    "stylelint": "^9.10.1",
-    "whatwg-fetch": "^2.0.3"
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.3.0"
   },
-  "jest": {
-    "moduleDirectories": [
-      "node_modules"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ],
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less|scss)$": "<rootDir>/src/__mocks__/styleMock.js"
-    },
-    "testEnvironment": "node",
-    "transform": {
-      "^.+\\.js$": "babel-jest"
-    }
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
