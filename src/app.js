@@ -1,24 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+      <header className="App-header">Hi, I'm Kathy</header>
+
+      <p>
+        I'm a frontend engineer. I've used mainly React in my work but by no
+        means would I call myself an expert. Currently, I work at{' '}
+        <a href="https://www.doctor.com" target="_blank">
+          Doctor.com
         </a>
-      </header>
+        . I've been fortunate enough to have been a part of completing many
+        products and services DDC has to offer.
+      </p>
+      <p>
+        Outside of coding, I like getting out there with my trusty four-legged
+        companion, Pim. In contrast to my head down work, I enjoy the relief and
+        exhilaration from stepping into nature and getting soaked by waterfalls.
+        Being in the great outdoors reminds me that life goes beyond words and
+        screens. Tiring out the pup is a big plus, too.
+      </p>
     </div>
   );
 }
